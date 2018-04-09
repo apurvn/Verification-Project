@@ -1,0 +1,32 @@
+Using language generation: IEEE1364-2005,no-specify,xtypes,icarus-misc
+PARSING INPUT
+LOCATING TOP-LEVEL MODULES
+   mesi_isc_tb
+ELABORATING DESIGN
+RUNNING FUNCTORS
+ ... 1 iterations deleted 372 dangling signals and 0 events.
+ ... 2 iterations deleted 372 dangling signals and 69 events.
+CALCULATING ISLANDS
+CODE GENERATION
+ ... invoking target_design
+STATISTICS
+lex_string: add_count=683 hit_count=3356
+Icarus Verilog version 0.9.3  (v0_9_3)
+
+Copyright 1998-2010 Stephen Williams
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+translate: /usr/lib/ivl/ivlpp  -v -L -F"/tmp/ivrlg238274735" -f"/tmp/ivrlg38274735" -p"/tmp/ivrli38274735"  | /usr/lib/ivl/ivl -v -C"/tmp/ivrlh38274735" -C"/usr/lib/ivl/vvp.conf" -- -

@@ -1,0 +1,15 @@
+VCD info: dumpfile ./dump.vcd opened for output.
+Watchdog finish
+
+Statistic
+
+CPU 3. WR:       155 RD:       186 NOP:       389  
+
+CPU 2. WR:       141 RD:       202 NOP:       390
+
+CPU 1. WR:       136 RD:       207 NOP:       343
+
+CPU 0. WR:        145 RD:       196 NOP:       362
+
+Total rd and wr accesses:       1368
+
