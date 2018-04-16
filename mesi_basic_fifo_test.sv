@@ -1,10 +1,3 @@
-module mesi_isc_props (
-    input clk, rst
-);
-
-endmodule
-
-
 module mesi_isc_fifo_props (
      // Inputs
      clk,
@@ -80,76 +73,16 @@ assert property (@(posedge clk) disable iff(rst) !(rd_i && wr_i && (ptr_wr==ptr_
 cover property (@(posedge clk) $rose(status_full_o));
 cover property (@(posedge clk) $rose(status_empty_o));
 
+// Read and write operation occurs atleast once
+cover property (@(posedge clk) wr_i);
+cover property (@(posedge clk) rd_i);
+cover property (@(posedge clk) wr_i & rd_i);
 
 endmodule
 
-
-module breq_fifos_cntl_props (
-    clk,
-    rst,
-    mbus_cmd_array_i,
-    fifo_status_empty_array_i,
-    fifo_status_full_array_i,
-    broad_fifo_status_full_i,
-    broad_addr_array_i,
-    broad_type_array_i,
-    broad_id_array_i,
-    // Outputs
-    mbus_ack_array_o,
-    fifo_wr_array_o,
-    fifo_rd_array_o,
-    broad_fifo_wr_o,
-    broad_addr_o,
-    broad_type_o,
-    broad_cpu_id_o,
-    broad_id_o,
-    breq_type_array_o,
-    breq_cpu_id_array_o,
-    breq_id_array_o
-);
-
-parameter
-  MBUS_CMD_WIDTH           = 3,
-  ADDR_WIDTH               = 32,
-  BROAD_TYPE_WIDTH         = 2,  
-  BROAD_ID_WIDTH           = 7;
-
-input clk;
-input rst;
-
-input [4*MBUS_CMD_WIDTH-1:0] mbus_cmd_array_i;
-input [3:0] fifo_status_empty_array_i;       
-input [3:0] fifo_status_full_array_i;
-input broad_fifo_status_full_i;
-input [4*ADDR_WIDTH-1      :0] broad_addr_array_i;
-input [4*BROAD_TYPE_WIDTH-1:0] broad_type_array_i;
-input [4*BROAD_ID_WIDTH-1  :0] broad_id_array_i;
-     
-input [3:0]            mbus_ack_array_o;
-input [3:0]            fifo_wr_array_o;
-input [3:0]            fifo_rd_array_o; 
-input                  broad_fifo_wr_o;
-input [ADDR_WIDTH-1      :0] broad_addr_o;
-input [BROAD_TYPE_WIDTH-1:0] broad_type_o;
-input [1:0]                  broad_cpu_id_o;
-input [BROAD_ID_WIDTH-1:  0] broad_id_o;
-input [4*BROAD_TYPE_WIDTH-1:0] breq_type_array_o;
-input [4*2-1:0]              breq_cpu_id_array_o;
-input [4*BROAD_ID_WIDTH-1:0] breq_id_array_o;
-
-
-
-
-
-endmodule
 
 
 module Wrapper;
-
-//bind mesi_isc mesi_isc_props wrp_mesi_isc (
-//    .clk(clk),
-//    .rst(rst)
-//);
 
 bind mesi_isc_basic_fifo mesi_isc_fifo_props wrp_mesi_isc_fifo (
     .clk(clk),
@@ -165,30 +98,6 @@ bind mesi_isc_basic_fifo mesi_isc_fifo_props wrp_mesi_isc_fifo (
     .fifo_depth(fifo_depth),
     .entry(entry)
 );
-
-
-//bind mesi_isc_breq_fifos_cntl breq_fifos_cntl_props  wrp_breq_cntl (
-//    .clk(clk),
-//    .rst(rst),
-//    .mbus_cmd_array_i(mbus_cmd_array_i),
-//    .fifo_status_empty_array_i(fifo_status_empty_array_i),
-//    .fifo_status_full_array_i(fifo_status_full_array_i),
-//    .broad_fifo_status_full_i(broad_fifo_status_full_i),
-//    .broad_addr_array_i(broad_addr_array_i),
-//    .broad_type_array_i(broad_type_array_i),
-//    .broad_id_array_i(broad_id_array_i),
-//    .mbus_ack_array_o(mbus_ack_array_o),
-//    .fifo_wr_array_o(fifo_wr_array_o),
-//    .fifo_rd_array_o(fifo_rd_array_o),
-//    .broad_fifo_wr_o(broad_fifo_wr_o),
-//    .broad_addr_o(broad_addr_o),
-//    .broad_type_o(broad_type_o),
-//    .broad_cpu_id_o(broad_cpu_id_o),
-//    .broad_id_o(broad_id_o),
-//    .breq_type_array_o(breq_type_array_o),
-//    .breq_cpu_id_array_o(breq_cpu_id_array_o),
-//    .breq_id_array_o(breq_id_array_o)
-//);
 
 
 endmodule

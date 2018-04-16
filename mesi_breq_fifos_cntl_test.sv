@@ -126,8 +126,23 @@ assert property (@(posedge clk) disable iff(rst)
         & !fifo_status_full_array_i[0] & !mbus_ack_array_o[0] |=> mbus_ack_array_o[0]
 );
 
-// Liveness property for round robin arbiter
-//assert property (@(posedge clk)  |-> ##[1:4] fifo_rd_array_o[0]);
+// Liveness property for round robin arbiter - Request should be read in 4 cycles
+assert property (@(posedge clk) disable iff (broad_fifo_status_full_i | fifo_status_empty_array_i[0]) 
+    !fifo_status_empty_array_i[0] |-> ##[1:4] fifo_rd_array_o[0]
+);
+
+assert property (@(posedge clk) disable iff (broad_fifo_status_full_i | fifo_status_empty_array_i[1]) 
+    !fifo_status_empty_array_i[1] |-> ##[1:4] fifo_rd_array_o[1]
+);
+
+assert property (@(posedge clk) disable iff (broad_fifo_status_full_i | fifo_status_empty_array_i[2]) 
+    !fifo_status_empty_array_i[2] |-> ##[1:4] fifo_rd_array_o[2]
+);
+
+assert property (@(posedge clk) disable iff (broad_fifo_status_full_i | fifo_status_empty_array_i[3]) 
+    !fifo_status_empty_array_i[3] |-> ##[1:4] fifo_rd_array_o[3]
+);
+
 
 // Read only from one FIFO at a time
 assert property (@(posedge clk) disable iff(rst) $onehot0(fifo_rd_array_o));
@@ -135,6 +150,55 @@ assert property (@(posedge clk) disable iff(rst) $onehot0(fifo_rd_array_o));
 // FIFO broadcast write should be only when we are reading from breq FIFO
 assert property (@(posedge clk) disable iff(rst) |fifo_rd_array_o |-> broad_fifo_wr_o);
 assert property (@(posedge clk) disable iff(rst) !(|fifo_rd_array_o) |-> !broad_fifo_wr_o);
+
+// Fixed values for cpu_id are correct
+assert property (@(posedge clk) breq_cpu_id_array_o[(3+1)*2-1 : 3*2] == 3);
+assert property (@(posedge clk) breq_cpu_id_array_o[(2+1)*2-1 : 2*2] == 2);
+assert property (@(posedge clk) breq_cpu_id_array_o[(1+1)*2-1 : 1*2] == 1);
+assert property (@(posedge clk) breq_cpu_id_array_o[(0+1)*2-1 : 0*2] == 0);
+
+//generate
+//for (genvar i=0; i<4; i++) begin : assert_cpu_id
+//    assert property (@(posedge clk) breq_cpu_id_array_o[(i+1)*2-1 : i*2] == i);
+//end
+//endgenerate
+
+// Check breq_type_array_o is properly assigned
+assert property (@(posedge clk) mbus_cmd_array_i_3[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_RD_BROAD
+        |=> breq_type_array_o[(3+1)*BROAD_TYPE_WIDTH-1: 3*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_RD);
+assert property (@(posedge clk) mbus_cmd_array_i_3[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_WR_BROAD
+        |=> breq_type_array_o[(3+1)*BROAD_TYPE_WIDTH-1: 3*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_WR);
+assert property (@(posedge clk) ((mbus_cmd_array_i_3[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_WR) ||
+            (mbus_cmd_array_i_3[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_RD) || 
+            (mbus_cmd_array_i_3[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_NOP))
+        |=> breq_type_array_o[(3+1)*BROAD_TYPE_WIDTH-1: 3*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_NOP);
+
+assert property (@(posedge clk) mbus_cmd_array_i_2[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_RD_BROAD
+        |=> breq_type_array_o[(2+1)*BROAD_TYPE_WIDTH-1: 2*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_RD);
+assert property (@(posedge clk) mbus_cmd_array_i_2[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_WR_BROAD
+        |=> breq_type_array_o[(2+1)*BROAD_TYPE_WIDTH-1: 2*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_WR);
+assert property (@(posedge clk) ((mbus_cmd_array_i_2[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_WR) ||
+            (mbus_cmd_array_i_2[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_RD) || 
+            (mbus_cmd_array_i_2[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_NOP))
+        |=> breq_type_array_o[(2+1)*BROAD_TYPE_WIDTH-1: 2*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_NOP);
+
+assert property (@(posedge clk) mbus_cmd_array_i_1[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_RD_BROAD
+        |=> breq_type_array_o[(1+1)*BROAD_TYPE_WIDTH-1: 1*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_RD);
+assert property (@(posedge clk) mbus_cmd_array_i_1[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_WR_BROAD
+        |=> breq_type_array_o[(1+1)*BROAD_TYPE_WIDTH-1: 1*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_WR);
+assert property (@(posedge clk) ((mbus_cmd_array_i_1[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_WR) ||
+            (mbus_cmd_array_i_1[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_RD) || 
+            (mbus_cmd_array_i_1[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_NOP))
+        |=> breq_type_array_o[(1+1)*BROAD_TYPE_WIDTH-1: 1*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_NOP);
+
+assert property (@(posedge clk) mbus_cmd_array_i_0[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_RD_BROAD
+        |=> breq_type_array_o[(0+1)*BROAD_TYPE_WIDTH-1: 0*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_RD);
+assert property (@(posedge clk) mbus_cmd_array_i_0[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_WR_BROAD
+        |=> breq_type_array_o[(0+1)*BROAD_TYPE_WIDTH-1: 0*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_WR);
+assert property (@(posedge clk) ((mbus_cmd_array_i_0[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_WR) ||
+            (mbus_cmd_array_i_0[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_RD) || 
+            (mbus_cmd_array_i_0[MBUS_CMD_WIDTH-1:0]==`MESI_ISC_MBUS_CMD_NOP))
+        |=> breq_type_array_o[(0+1)*BROAD_TYPE_WIDTH-1: 0*BROAD_TYPE_WIDTH] == `MESI_ISC_BREQ_TYPE_NOP);
 
 
 // FIFO are empty atleast once
@@ -178,6 +242,19 @@ cover property (@(posedge clk) mbus_cmd_array_i_0 == `MESI_ISC_MBUS_CMD_RD_BROAD
 cover property (@(posedge clk) mbus_cmd_array_i_0 == `MESI_ISC_MBUS_CMD_WR);
 cover property (@(posedge clk) mbus_cmd_array_i_0 == `MESI_ISC_MBUS_CMD_RD);
 cover property (@(posedge clk) mbus_cmd_array_i_0 == `MESI_ISC_MBUS_CMD_NOP);
+
+// Read a breq and write to broad FIFO operations are happening atleast once
+cover property (@(posedge clk) fifo_rd_array_o[0]);
+cover property (@(posedge clk) fifo_rd_array_o[1]);
+cover property (@(posedge clk) fifo_rd_array_o[2]);
+cover property (@(posedge clk) fifo_rd_array_o[3]);
+
+cover property (@(posedge clk) fifo_wr_array_o[0]);
+cover property (@(posedge clk) fifo_wr_array_o[1]);
+cover property (@(posedge clk) fifo_wr_array_o[2]);
+cover property (@(posedge clk) fifo_wr_array_o[3]);
+
+cover property (@(posedge clk) broad_fifo_wr_o);
 
 
 endmodule   

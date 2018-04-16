@@ -1,28 +1,84 @@
-2018-04-08 22:09:13.826451 (31978) main____ INFO    ----------------------------------------
-2018-04-08 22:09:13.826821 (31978) main____ INFO    JasperGold version info
-2018-04-08 22:09:13.826851 (31978) main____ INFO      tool      : JasperGold 2015.09
-2018-04-08 22:09:13.826874 (31978) main____ INFO      version   : 2015.09 FCS 64 bits
-2018-04-08 22:09:13.826891 (31978) main____ INFO      build date: 2015.09.29 22:07:28 PDT
-2018-04-08 22:09:13.826902 (31978) main____ INFO    ----------------------------------------
-2018-04-08 22:09:13.826913 (31978) main____ INFO    Runtime info:
-2018-04-08 22:09:13.826927 (31978) main____ INFO      platform  : Linux 2.6.32-696.23.1.el6.x86_64 x86_64
-2018-04-08 22:09:13.826943 (31978) main____ INFO      hostname  : wario
-2018-04-08 22:09:13.826955 (31978) main____ INFO      pid       : 31978
-2018-04-08 22:09:13.826967 (31978) main____ INFO      arguments : '-style' 'windows'
-2018-04-08 22:09:13.826978 (31978) main____ INFO    ----------------------------------------
-2018-04-08 22:09:13.828999 (31978) lic__man INFO    Claim 'main' for <ui>.
-2018-04-08 22:09:13.835733 (31978) lic_core INFO    (1) checking out 'jasper_interactive' ...
-2018-04-08 22:09:13.852114 (31978) lic_core INFO    ... (1) checkout succeeded
-2018-04-08 22:09:13.852199 (31978) lic__man INFO    Claim 'fpv' for <ui>.
-2018-04-08 22:09:13.852227 (31978) lic_core INFO    (2) checking out 'jasper_fpv' ...
-2018-04-08 22:09:13.865584 (31978) lic_core INFO    ... (2) checkout succeeded
-2018-04-08 22:09:14.406897 (31978) lic__man INFO    Claim 'fpv' for <ui>.
-2018-04-08 22:09:14.527848 (31978) lic__man INFO    Unclaim 'fpv' for <ui>.
-2018-04-08 22:09:14.527924 (31978) lic__man INFO    Claim 'fpv' for <ui>.
-2018-04-08 22:09:14.538218 (31978) session_ INFO    Starting analysis session with session id 'session_0' ...
-2018-04-08 22:09:14.541299 (31978) session_ INFO    Analysis session with session id 'session_0' started (pid: 32225)
-2018-04-08 22:09:21.320738 (31978) session_ INFO    Analysis session 'session_0' connected to the console (host: 146.6.221.77:56844)
-2018-04-08 22:09:35.783099 (31978) lic__man INFO    Unclaim everything for 'session_0*'.
-2018-04-08 22:09:35.922234 (31978) lic__man INFO    Claim 'fpv' for 'session_0'.
-2018-04-08 22:09:36.383673 (31978) lic__man INFO    Unclaim everything for 'session_0/prove-0'.
-2018-04-08 22:17:38.618943 (31978) lic__man INFO    Entering idle state.
+2018-04-15 22:10:13.256410 (2655) main____ INFO    ----------------------------------------
+2018-04-15 22:10:13.256776 (2655) main____ INFO    JasperGold version info
+2018-04-15 22:10:13.256802 (2655) main____ INFO      tool      : JasperGold 2015.09
+2018-04-15 22:10:13.256825 (2655) main____ INFO      version   : 2015.09 FCS 64 bits
+2018-04-15 22:10:13.256841 (2655) main____ INFO      build date: 2015.09.29 22:07:28 PDT
+2018-04-15 22:10:13.256852 (2655) main____ INFO    ----------------------------------------
+2018-04-15 22:10:13.256862 (2655) main____ INFO    Runtime info:
+2018-04-15 22:10:13.256876 (2655) main____ INFO      platform  : Linux 2.6.32-696.23.1.el6.x86_64 x86_64
+2018-04-15 22:10:13.256892 (2655) main____ INFO      hostname  : wario
+2018-04-15 22:10:13.256904 (2655) main____ INFO      pid       : 2655
+2018-04-15 22:10:13.256916 (2655) main____ INFO      arguments : '-style' 'windows'
+2018-04-15 22:10:13.256927 (2655) main____ INFO    ----------------------------------------
+2018-04-15 22:10:13.260805 (2655) lic__man INFO    Claim 'main' for <ui>.
+2018-04-15 22:10:13.268111 (2655) lic_core INFO    (1) checking out 'jasper_interactive' ...
+2018-04-15 22:10:13.287926 (2655) lic_core INFO    ... (1) checkout succeeded
+2018-04-15 22:10:13.288083 (2655) lic__man INFO    Claim 'fpv' for <ui>.
+2018-04-15 22:10:13.288133 (2655) lic_core INFO    (2) checking out 'jasper_fpv' ...
+2018-04-15 22:10:13.303277 (2655) lic_core INFO    ... (2) checkout succeeded
+2018-04-15 22:10:13.846646 (2655) lic__man INFO    Claim 'fpv' for <ui>.
+2018-04-15 22:10:13.972390 (2655) lic__man INFO    Unclaim 'fpv' for <ui>.
+2018-04-15 22:10:13.972465 (2655) lic__man INFO    Claim 'fpv' for <ui>.
+2018-04-15 22:10:13.985815 (2655) session_ INFO    Starting analysis session with session id 'session_0' ...
+2018-04-15 22:10:13.988645 (2655) session_ INFO    Analysis session with session id 'session_0' started (pid: 2761)
+2018-04-15 22:10:19.930619 (2655) session_ INFO    Analysis session 'session_0' connected to the console (host: 146.6.221.77:41140)
+2018-04-15 22:11:01.776261 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:11:02.411725 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:11:02.772813 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-0'.
+2018-04-15 22:16:50.060910 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:16:50.258760 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:16:50.624824 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-1'.
+2018-04-15 22:24:50.626343 (2655) lic__man INFO    Entering idle state.
+2018-04-15 22:42:59.175310 (2655) lic__man INFO    Leaving idle state.
+2018-04-15 22:43:00.919083 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:43:01.250035 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:43:01.619937 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-2'.
+2018-04-15 22:43:10.372584 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:43:10.670179 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:43:11.047661 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-3'.
+2018-04-15 22:45:16.188548 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:45:16.566075 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:45:17.198638 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-4'.
+2018-04-15 22:45:48.782730 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:45:49.042266 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:45:49.382391 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-5'.
+2018-04-15 22:48:18.832671 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:48:18.972324 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:48:19.375498 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-6'.
+2018-04-15 22:49:20.639370 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:49:21.091286 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:49:21.311677 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-7'.
+2018-04-15 22:49:55.555878 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-8'.
+2018-04-15 22:51:19.469519 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:51:19.655487 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:51:20.244780 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-9'.
+2018-04-15 22:56:19.807257 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:56:20.037361 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:56:21.243271 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-10'.
+2018-04-15 22:57:21.690125 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 22:57:22.043908 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 22:57:23.148915 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-11'.
+2018-04-15 23:07:53.985045 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 23:07:54.160127 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 23:07:54.920607 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-12'.
+2018-04-15 23:15:21.634496 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 23:15:21.778249 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 23:15:23.234144 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-13'.
+2018-04-15 23:23:23.234118 (2655) lic__man INFO    Entering idle state.
+2018-04-15 23:25:51.920605 (2655) lic__man INFO    Leaving idle state.
+2018-04-15 23:33:51.921407 (2655) lic__man INFO    Entering idle state.
+2018-04-15 23:37:38.991561 (2655) lic__man INFO    Leaving idle state.
+2018-04-15 23:38:36.880515 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 23:38:37.052404 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-14'.
+2018-04-15 23:46:37.052875 (2655) lic__man INFO    Entering idle state.
+2018-04-15 23:54:22.609714 (2655) lic__man INFO    Leaving idle state.
+2018-04-15 23:59:46.618703 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 23:59:46.773351 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 23:59:47.204431 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-15'.
+2018-04-15 23:59:59.593183 (2655) lic__man INFO    Unclaim everything for 'session_0*'.
+2018-04-15 23:59:59.824806 (2655) lic__man INFO    Claim 'fpv' for 'session_0'.
+2018-04-15 23:59:59.984005 (2655) lic__man INFO    Unclaim everything for 'session_0/prove-16'.
+2018-04-16 00:07:59.983981 (2655) lic__man INFO    Entering idle state.
+2018-04-16 01:43:01.864673 (2655) lic__man INFO    Leaving idle state.
+2018-04-16 01:43:03.307639 (2655) main____ INFO    About to exit: request to exit with status 0 received from analysis session 'session_0'
+2018-04-16 01:43:03.579575 (2655) main____ INFO    Exiting.

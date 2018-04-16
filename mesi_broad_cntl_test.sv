@@ -25,8 +25,20 @@ input fifo_status_full_i;
 input [BROAD_TYPE_WIDTH-1:0] broad_snoop_type_i; 
 input [1:0]  broad_snoop_cpu_id_i; 
 input [BROAD_ID_WIDTH-1:0] broad_snoop_id_i; 
-output [4*CBUS_CMD_WIDTH-1:0] cbus_cmd_array_o; 
-output broad_fifo_rd_o;
+input [4*CBUS_CMD_WIDTH-1:0] cbus_cmd_array_o; 
+input broad_fifo_rd_o;
+
+logic cbus_cmd3 = cbus_cmd_array_o[(3+1)*CBUS_CMD_WIDTH-1 : 3*CBUS_CMD_WIDTH];
+logic cbus_cmd2 = cbus_cmd_array_o[(2+1)*CBUS_CMD_WIDTH-1 : 2*CBUS_CMD_WIDTH];
+logic cbus_cmd1 = cbus_cmd_array_o[(1+1)*CBUS_CMD_WIDTH-1 : 1*CBUS_CMD_WIDTH];
+logic cbus_cmd0 = cbus_cmd_array_o[(0+1)*CBUS_CMD_WIDTH-1 : 0*CBUS_CMD_WIDTH];
+
+// Assume properties
+assume property (@(posedge clk) cbus_cmd3 != 3'd5);
+assume property (@(posedge clk) cbus_cmd3 != 3'd6);
+assume property (@(posedge clk) cbus_cmd3 != 3'd7);
+
+assert property (@(posedge clk) cbus
 
 // Reset values
 assert property (@(posedge clk) $fell(rst) |-> broad_fifo_rd_o == 0);
