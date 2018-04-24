@@ -17,6 +17,7 @@ module cpu_props (
      tb_ins_ack_o,
      m_state, 
      c_state,
+     cache_state,
      cache_state0,
      cache_state1,
      cache_state2,
@@ -57,6 +58,7 @@ input [DATA_WIDTH-1:0] mbus_data_o;
 input cbus_ack_o; 
 input tb_ins_ack_o; 
 input m_state, c_state;
+input [3:0] cache_state [9:0];
 input [3:0] cache_state0;
 input [3:0] cache_state1;
 input [3:0] cache_state2;
@@ -69,7 +71,12 @@ input [3:0] cache_state8;
 input [3:0] cache_state9;
 
 
+assume property (@(posedge clk) (cache_state[0] == `MESI_ISC_TB_CPU_MESI_M) || (cache_state[0] == `MESI_ISC_TB_CPU_MESI_E)
+        || (cache_state[0] == `MESI_ISC_TB_CPU_MESI_S) || (cache_state[0] == `MESI_ISC_TB_CPU_MESI_I)); 
+
 assert property (@(posedge clk) $fell(rst) |-> m_state==`MESI_ISC_TB_CPU_M_STATE_IDLE); 
+assert property (@(posedge clk) $fell(rst) |-> cache_state[0] == `MESI_ISC_TB_CPU_MESI_I); 
+assert property (@(posedge clk) $fell(rst) |=> tb_ins_ack_o == 0);
 assert property (@(posedge clk) $fell(rst) |-> c_state==`MESI_ISC_TB_CPU_C_STATE_IDLE); 
 
 
@@ -96,7 +103,8 @@ bind mesi_isc_tb_cpu cpu_props wrp_cpu (
     .cbus_ack_o(cbus_ack_o),
     .tb_ins_ack_o(tb_ins_ack_o),
     .m_state(m_state),
-    .c_state(c_state)
+    .c_state(c_state),
+    .cache_state(cache_state),
     .cache_state0(cache_state0),
     .cache_state1(cache_state1),
     .cache_state2(cache_state2),
