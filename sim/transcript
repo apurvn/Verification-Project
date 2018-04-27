@@ -1,0 +1,128 @@
+# //  ModelSim SE-64 10.6 Dec 13 2016Linux 2.6.32-696.20.1.el6.x86_64
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim SE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+vsim -novopt my_lib.mesi_isc_tb
+# vsim -novopt my_lib.mesi_isc_tb 
+# Start time: 15:39:31 on Apr 27,2018
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Refreshing /home/ecelrc/students/yliu8/Verification-Project/sim/my_lib.mesi_isc_tb
+# Loading my_lib.mesi_isc_tb
+# Loading my_lib.mesi_isc
+# Loading my_lib.mesi_isc_broad
+# Loading my_lib.mesi_isc_broad_cntl
+# Loading my_lib.mesi_isc_basic_fifo
+# Loading my_lib.mesi_isc_breq_fifos
+# Loading my_lib.mesi_isc_breq_fifos_cntl
+# Loading sv_std.std
+# Loading my_lib.mesi_isc_tb_cpu
+# Loading my_lib.cpu_sva
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(167): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_0.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 167
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(168): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_0.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 168
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(165): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_1.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 165
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(166): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_1.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 166
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(163): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_2.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 163
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(164): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_2.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 164
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(161): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_3.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 161
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(162): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_3.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 162
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(169): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_broad.broad_fifo.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 169
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(170): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_broad.broad_fifo.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 170
+# Error loading design
+# End time: 15:39:31 on Apr 27,2018, Elapsed time: 0:00:00
+# Errors: 10, Warnings: 11
+vsim -novopt my_lib.mesi_isc_tb
+# vsim -novopt my_lib.mesi_isc_tb 
+# Start time: 15:40:06 on Apr 27,2018
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading my_lib.mesi_isc_tb
+# Loading my_lib.mesi_isc
+# Loading my_lib.mesi_isc_broad
+# Loading my_lib.mesi_isc_broad_cntl
+# Loading my_lib.mesi_isc_basic_fifo
+# Loading my_lib.mesi_isc_breq_fifos
+# Loading my_lib.mesi_isc_breq_fifos_cntl
+# Loading sv_std.std
+# Loading my_lib.mesi_isc_tb_cpu
+# Loading my_lib.cpu_sva
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(167): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_0.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 167
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(168): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_0.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 168
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(165): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_1.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 165
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(166): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_1.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 166
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(163): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_2.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 163
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(164): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_2.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 164
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(161): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_3.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 161
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(162): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_3.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 162
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(169): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_broad.broad_fifo.dbg_fifo_overflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 169
+# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(170): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_broad.broad_fifo.dbg_fifo_underflow.
+#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 170
+# Error loading design
+# End time: 15:40:06 on Apr 27,2018, Elapsed time: 0:00:00
+# Errors: 10, Warnings: 11

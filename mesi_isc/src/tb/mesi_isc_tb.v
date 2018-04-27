@@ -627,4 +627,10 @@ mesi_isc_tb_cpu  #(
      .tb_ins_ack_o     (tb_ins_ack[0])
  );
 
+cpu_sva u_cpu_sva(
+		.clk(mesi_isc_tb.clk),
+		.rst(mesi_isc_tb.rst),
+		.cache_state(mesi_isc_tb.mesi_isc_tb_cpu3.cache_state0)	
+);
+
 endmodule
