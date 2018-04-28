@@ -76,6 +76,8 @@
 // update written data. The check is done separately for each CPU written data. 
 // This check covers the three rules for coherency system.
 // task sanity_check_rule1
+
+
 task sanity_check_rule1_rule2;
 input [3:0]              cpu_id;
 input [ADDR_WIDTH-1:0]   mbus_addr;
