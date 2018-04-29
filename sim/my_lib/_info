@@ -9,196 +9,275 @@ z2
 cModel Technology
 Z0 d/home/ecelrc/students/yliu8/Verification-Project/sim
 T_opt
-!s110 1524863638
-VjR1bGnkbUGolE1IlfJzOB3
-04 11 4 work mesi_isc_tb fast 0
-=1-047d7ba5eb37-5ae39295-e3e76-4c73
-o-quiet -auto_acc_if_foreign -work my_lib +acc
+!s110 1524979053
+V`cg[GM;diEV6VdonIbnbd3
+04 15 4 work mesi_isc_tb_wrp fast 0
+=1-047d7ba5eb37-5ae5556d-32bcf-2ae3
+o-quiet -auto_acc_if_foreign -work work +acc
 Z1 tCvgOpt 0
 n@_opt
 OL;O;10.6;65
 vcpu_sva
-DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z2 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z3 !s110 1524979028
+!i10b 1
+!s100 _zdmJl6[]6_Z;h?]KT<?S3
+IkKl`_=oJnVGQ2e[6XHof60
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 !s105 mesi_isc_cpu_test_sv_unit
+S1
+R0
+Z6 w1524978400
+Z7 8mesi_isc_cpu_test.sv
+Z8 Fmesi_isc_cpu_test.sv
+L0 5
+Z9 OL;L;10.6;65
 r1
 !s85 0
 31
+Z10 !s108 1524979028.000000
+Z11 !s107 transcript|my_lib|modelsim.ini|mesi_isc_tb_wrp.v|mesi_isc_tb_define.v|mesi_isc_tb_cpu.v|mesi_isc_tb.v|mesi_isc_define.v|mesi_isc_cpu_test.sv|mesi_isc_broad_cntl.v|mesi_isc_broad.v|mesi_isc_breq_fifos_cntl.v|mesi_isc_breq_fifos.v|mesi_isc_basic_fifo.v|mesi_isc.v|
+Z12 !s90 -reportprogress|300|-sv|mesi_isc.v|mesi_isc_basic_fifo.v|mesi_isc_breq_fifos.v|mesi_isc_breq_fifos_cntl.v|mesi_isc_broad.v|mesi_isc_broad_cntl.v|mesi_isc_cpu_test.sv|mesi_isc_define.v|mesi_isc_tb.v|mesi_isc_tb_cpu.v|mesi_isc_tb_define.v|mesi_isc_tb_wrp.v|modelsim.ini|my_lib|transcript|
+!i113 0
+Z13 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vcpu_sva_wrapper
+R2
+R3
 !i10b 1
-!s100 ^]InOW8Ohi<VE`mfZOh7]0
-I>n6L6oM^eWO^OGaGd5_iF2
-!s105 mesi_isc_cpu_test_sv_unit
+!s100 BNaQXegA3^@TEhWXAzHzZ1
+I4MW>iKH2WaU7R>5TfJ<mM3
+R4
+R5
 S1
 R0
-w1524860565
-8/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_cpu_test.sv
-F/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_cpu_test.sv
-L0 3
-Z3 OL;L;10.6;65
-!s108 1524860640.000000
-!s107 /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_define.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_define.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_cpu_test.sv|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v|
-!s90 -reportprogress|300|-work|work|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_cpu_test.sv|
+R6
+R7
+R8
+L0 32
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
 !i113 0
-Z4 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R13
 R1
 vmesi_isc
 R2
+R3
+!i10b 1
+!s100 b2h65e<[Bz9>DgG9m1TNQ2
+I>A]^YdGSE<7CAjdoHc<II2
+R4
+!s105 mesi_isc_v_unit
+S1
+R0
+Z14 w1524978360
+8mesi_isc.v
+Fmesi_isc.v
+Z15 L0 48
+R9
 r1
 !s85 0
 31
-!i10b 1
-!s100 lJaNEBkeRkl]_Sf=88=Hl2
-IF3bQlOhWIheiLzK@AAoI^0
-R0
-Z5 w1523306037
-8/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc.v
-F/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc.v
-Z6 L0 48
-R3
-Z7 !s108 1524696747.000000
-Z8 !s107 /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_define.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_broad_cntl.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_broad.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_breq_fifos_cntl.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_breq_fifos.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_basic_fifo.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc.v|
-Z9 !s90 -reportprogress|300|-work|work|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_basic_fifo.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_breq_fifos.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_breq_fifos_cntl.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_broad.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_broad_cntl.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_define.v|
+R10
+R11
+R12
 !i113 0
-R4
+R13
 R1
 vmesi_isc_basic_fifo
 R2
+R3
+!i10b 1
+!s100 W9N6Cg_hODPFA`P`<]Q^m2
+INmb[^CZBah9b^CD6en<YG0
+R4
+!s105 mesi_isc_basic_fifo_v_unit
+S1
+R0
+R14
+8mesi_isc_basic_fifo.v
+Fmesi_isc_basic_fifo.v
+Z16 L0 49
+R9
 r1
 !s85 0
 31
-!i10b 1
-!s100 JVGn_[OdE62nKQ[dXeJ?=1
-IUO9[PzSVQ8dX@Od6i0Dob2
-R0
-R5
-8/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_basic_fifo.v
-F/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_basic_fifo.v
-Z10 L0 49
-R3
-R7
-R8
-R9
+R10
+R11
+R12
 !i113 0
-R4
+R13
 R1
 vmesi_isc_breq_fifos
 R2
+R3
+!i10b 1
+!s100 blRoS0bQQoXi8K?AdUDPR3
+I1l^<MmoQS0]F=g0SWmTZ:2
+R4
+!s105 mesi_isc_breq_fifos_v_unit
+S1
+R0
+R14
+8mesi_isc_breq_fifos.v
+Fmesi_isc_breq_fifos.v
+L0 68
+R9
 r1
 !s85 0
 31
-!i10b 1
-!s100 L[V69nA395TdN=2L[BWNj0
-IAF4QkUek1UMK6G_QO[a1?2
-R0
-R5
-8/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_breq_fifos.v
-F/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_breq_fifos.v
-L0 68
-R3
-R7
-R8
-R9
+R10
+R11
+R12
 !i113 0
-R4
+R13
 R1
 vmesi_isc_breq_fifos_cntl
 R2
+R3
+!i10b 1
+!s100 BK^NC1]F>PgZ48oQ9^hfC1
+Iz1i1g1OcYl2G:4:;E:C1V1
+R4
+!s105 mesi_isc_breq_fifos_cntl_v_unit
+S1
+R0
+R14
+8mesi_isc_breq_fifos_cntl.v
+Fmesi_isc_breq_fifos_cntl.v
+L0 50
+R9
 r1
 !s85 0
 31
-!i10b 1
-!s100 >?PonOBOA<i=gea1kAC_53
-ImR:n[o@z;[f1KkbN9z50<2
-R0
-R5
-8/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_breq_fifos_cntl.v
-F/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_breq_fifos_cntl.v
-L0 50
-R3
-R7
-R8
-R9
+R10
+R11
+R12
 !i113 0
-R4
+R13
 R1
 vmesi_isc_broad
 R2
+R3
+!i10b 1
+!s100 ShLUXLE1kEP44?`^mfbBJ0
+IX90<?;mcHKVb;3:Zn6cdV1
+R4
+!s105 mesi_isc_broad_v_unit
+S1
+R0
+R14
+8mesi_isc_broad.v
+Fmesi_isc_broad.v
+R15
+R9
 r1
 !s85 0
 31
-!i10b 1
-!s100 cj6]he]JQzIHSafe?T6EK3
-IQL7j55Wo]SkIGnZAoFXji1
-R0
-R5
-8/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_broad.v
-F/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_broad.v
-R6
-R3
-R7
-R8
-R9
+R10
+R11
+R12
 !i113 0
-R4
+R13
 R1
 vmesi_isc_broad_cntl
 R2
+R3
+!i10b 1
+!s100 AQH0g[]zPYmBDAbDXXdQ?1
+I4XOf6A4JG;BcL82n3n0Od0
+R4
+!s105 mesi_isc_broad_cntl_v_unit
+S1
+R0
+R14
+8mesi_isc_broad_cntl.v
+Fmesi_isc_broad_cntl.v
+R15
+R9
 r1
 !s85 0
 31
-!i10b 1
-!s100 T@Z2XG;e^SMW[jQGPazGi3
-Ikb`5FIZ[8=HFKRbbcM2hf3
-R0
-R5
-8/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_broad_cntl.v
-F/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/rtl/mesi_isc_broad_cntl.v
-R6
-R3
-R7
-R8
-R9
+R10
+R11
+R12
 !i113 0
-R4
+R13
 R1
 vmesi_isc_tb
-!s110 1524863622
-!i10b 1
-!s100 S[@`[0di`9M4[hS8=AK>g2
-IfBhB6Q:UdL`JbC8MeNhTd1
 R2
-R0
-w1524863599
-8/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-F/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-L0 58
 R3
+!i10b 1
+!s100 gcc5@6PSV[9VPP?:46n]Z1
+IOJ5A@]Y2TUPBn:E>`G@D51
+R4
+!s105 mesi_isc_tb_v_unit
+S1
+R0
+R6
+8mesi_isc_tb.v
+Fmesi_isc_tb.v
+L0 59
+R9
 r1
 !s85 0
 31
-!s108 1524863622.000000
-!s107 /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_define.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_define.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v|
-!s90 -reportprogress|300|-work|work|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v|
+R10
+R11
+R12
 !i113 0
-R4
+R13
 R1
 vmesi_isc_tb_cpu
-!s110 1524863258
-!i10b 1
-!s100 VIoXQ83GzzOHmkODQ2:YO0
-IVR<SNz=hlFK:8e7LE3Vj^2
 R2
-R0
-w1524347333
-8/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_cpu.v
-F/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_cpu.v
-R10
 R3
+!i10b 1
+!s100 h2k7VmTK3m;6h24_b43gA2
+InE5VZba>V2oSNZ:?4?@ND1
+R4
+!s105 mesi_isc_tb_cpu_v_unit
+S1
+R0
+R6
+8mesi_isc_tb_cpu.v
+Fmesi_isc_tb_cpu.v
+R16
+R9
 r1
 !s85 0
 31
-!s108 1524863258.000000
-!s107 /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_define.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_define.v|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_cpu.v|
-!s90 -reportprogress|300|-work|work|/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_cpu.v|
+R10
+R11
+R12
 !i113 0
+R13
+R1
+vmesi_isc_tb_wrp
+R2
+R3
+!i10b 1
+!s100 GM6ZAzgcBJ@ei@?a8Yz8k1
+I8P[RT9bj5]Y;I4h8]2JAd0
 R4
+!s105 mesi_isc_tb_wrp_v_unit
+S1
+R0
+R6
+8mesi_isc_tb_wrp.v
+Fmesi_isc_tb_wrp.v
+L0 3
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
 R1

@@ -11,435 +11,68 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
+vlib my_lib
+vmap work my_lib
+# Model Technology ModelSim SE-64 vmap 10.6 Lib Mapping Utility 2016.12 Dec 13 2016
+# vmap work my_lib 
+# Copying /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+vmap
+# Model Technology ModelSim SE-64 vmap 10.6 Lib Mapping Utility 2016.12 Dec 13 2016
+# vmap 
+# Reading modelsim.ini
+# "work" maps to directory ./my_lib.
+# Reading /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../modelsim.ini
+# "std" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../std.
+# "ieee" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../ieee.
+# "vital2000" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../vital2000.
+# "verilog" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../verilog.
+# "std_developerskit" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../std_developerskit.
+# "synopsys" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../synopsys.
+# "modelsim_lib" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../modelsim_lib.
+# "sv_std" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../sv_std.
+# "mtiAvm" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../avm.
+# "mtiRnm" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../rnm.
+# "mtiOvm" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../ovm-2.1.2.
+# "mtiUvm" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../uvm-1.1d.
+# "mtiUPF" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../upf_lib.
+# "mtiPA" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../pa_lib.
+# "floatfixlib" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../floatfixlib.
+# "mc2_lib" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../mc2_lib.
+# "osvvm" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../osvvm.
+# "mgc_ams" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../mgc_ams.
+# "ieee_env" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../ieee_env.
+# "infact" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../infact.
+# "vhdlopt_lib" maps to directory /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/../vhdlopt_lib.
+vlog -sv *
 # Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 15:52:38 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v 
+# Start time: 00:17:08 on Apr 29,2018
+# vlog -reportprogress 300 -sv mesi_isc.v mesi_isc_basic_fifo.v mesi_isc_breq_fifos.v mesi_isc_breq_fifos_cntl.v mesi_isc_broad.v mesi_isc_broad_cntl.v mesi_isc_cpu_test.sv mesi_isc_define.v mesi_isc_tb.v mesi_isc_tb_cpu.v mesi_isc_tb_define.v mesi_isc_tb_wrp.v modelsim.ini my_lib transcript 
+# -- Compiling module mesi_isc
+# -- Compiling module mesi_isc_basic_fifo
+# -- Compiling module mesi_isc_breq_fifos
+# -- Compiling module mesi_isc_breq_fifos_cntl
+# -- Compiling module mesi_isc_broad
+# -- Compiling module mesi_isc_broad_cntl
+# -- Compiling module cpu_sva
+# -- Compiling module cpu_sva_wrapper
 # -- Compiling module mesi_isc_tb
-# 
-# Top level modules:
-# 	mesi_isc_tb
-# End time: 15:52:38 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -voptargs=+acc my_lib.mesi_isc_tb
-# vsim -voptargs="+acc" my_lib.mesi_isc_tb 
-# Start time: 15:53:21 on Apr 27,2018
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(161): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_3/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(162): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_3/dbg_fifo_underflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(163): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_2/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(164): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_2/dbg_fifo_underflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(165): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_1/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(166): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_1/dbg_fifo_underflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(167): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_0/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(168): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_0/dbg_fifo_underflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(169): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_broad/broad_fifo/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(170): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_broad/broad_fifo/dbg_fifo_underflow'.
-# Optimization failed
-# Error loading design
-# End time: 15:53:21 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 10, Warnings: 0
-vsim -novopt my_lib.mesi_isc_tb
-# vsim -novopt my_lib.mesi_isc_tb 
-# Start time: 15:56:18 on Apr 27,2018
-# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
-# Refreshing /home/ecelrc/students/yliu8/Verification-Project/sim/my_lib.mesi_isc_tb
-# Loading my_lib.mesi_isc_tb
-# Loading my_lib.mesi_isc
-# Loading my_lib.mesi_isc_broad
-# Loading my_lib.mesi_isc_broad_cntl
-# Loading my_lib.mesi_isc_basic_fifo
-# Loading my_lib.mesi_isc_breq_fifos
-# Loading my_lib.mesi_isc_breq_fifos_cntl
-# Loading sv_std.std
-# Loading my_lib.mesi_isc_tb_cpu
-# Loading my_lib.cpu_sva
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(167): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_0.dbg_fifo_overflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 167
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(168): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_0.dbg_fifo_underflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 168
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(165): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_1.dbg_fifo_overflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 165
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(166): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_1.dbg_fifo_underflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 166
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(163): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_2.dbg_fifo_overflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 163
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(164): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_2.dbg_fifo_underflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 164
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(161): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_breq_fifos.fifo_3.dbg_fifo_overflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 161
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(162): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_breq_fifos.fifo_3.dbg_fifo_underflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 162
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(169): [CNNODP] - Component name (dbg_fifo_overflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_overflow' in mesi_isc.mesi_isc_broad.broad_fifo.dbg_fifo_overflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 169
-# ** Warning: (vsim-3008) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(170): [CNNODP] - Component name (dbg_fifo_underflow) is not on a downward path.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# ** Error: (vsim-3043) Unresolved reference to 'dbg_fifo_underflow' in mesi_isc.mesi_isc_broad.broad_fifo.dbg_fifo_underflow.
-#    Time: 0 ps  Iteration: 0  Instance: /mesi_isc_tb File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v Line: 170
-# Error loading design
-# End time: 15:56:19 on Apr 27,2018, Elapsed time: 0:00:01
-# Errors: 10, Warnings: 11
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:04:33 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v 
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(79): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81): (vlog-2730) Undefined variable: 'ADDR_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(82): (vlog-2730) Undefined variable: 'DATA_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(89): (vlog-2730) Undefined variable: 'mem'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(102): (vlog-2730) Undefined variable: 'clk'.
-# ** Error: (vlog-13069) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(111): near "always": syntax error, unexpected always, expecting class.
-# End time: 16:04:33 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 6, Warnings: 0
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:04:34 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v 
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(79): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81): (vlog-2730) Undefined variable: 'ADDR_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(82): (vlog-2730) Undefined variable: 'DATA_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(89): (vlog-2730) Undefined variable: 'mem'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(102): (vlog-2730) Undefined variable: 'clk'.
-# ** Error: (vlog-13069) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(111): near "always": syntax error, unexpected always, expecting class.
-# End time: 16:04:34 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 6, Warnings: 0
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:05:23 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v 
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(79): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81): (vlog-2730) Undefined variable: 'ADDR_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(82): (vlog-2730) Undefined variable: 'DATA_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(89): (vlog-2730) Undefined variable: 'mem'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(102): (vlog-2730) Undefined variable: 'clk'.
-# ** Error: (vlog-13069) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(111): near "always": syntax error, unexpected always, expecting class.
-# -- Compiling module mesi_isc_tb
-# End time: 16:05:23 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 6, Warnings: 0
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:06:32 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v 
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(79): Filename to `include must be enclosed in "'s.
-# ** Error: (vlog-13069) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(79): near ".": syntax error, unexpected '.', expecting class.
-# End time: 16:06:32 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 2, Warnings: 0
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:06:57 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v 
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(83): (vlog-2730) Undefined variable: 'ADDR_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(84): (vlog-2730) Undefined variable: 'DATA_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(91): (vlog-2730) Undefined variable: 'mem'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(104): (vlog-2730) Undefined variable: 'clk'.
-# ** Error: (vlog-13069) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(113): near "always": syntax error, unexpected always, expecting class.
-# End time: 16:06:57 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 6, Warnings: 0
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:07:25 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v 
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(82): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(84): (vlog-2730) Undefined variable: 'ADDR_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(85): (vlog-2730) Undefined variable: 'DATA_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(92): (vlog-2730) Undefined variable: 'mem'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(105): (vlog-2730) Undefined variable: 'clk'.
-# ** Error: (vlog-13069) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(114): near "always": syntax error, unexpected always, expecting class.
-# End time: 16:07:25 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 6, Warnings: 0
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_cpu.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:07:38 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_cpu.v 
 # -- Compiling module mesi_isc_tb_cpu
-# 
-# Top level modules:
-# 	mesi_isc_tb_cpu
-# End time: 16:07:38 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:07:43 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v 
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(82): (vlog-2155) Global declarations are illegal in Verilog 2001 syntax.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(84): (vlog-2730) Undefined variable: 'ADDR_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(85): (vlog-2730) Undefined variable: 'DATA_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(92): (vlog-2730) Undefined variable: 'mem'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(105): (vlog-2730) Undefined variable: 'clk'.
-# ** Error: (vlog-13069) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(114): near "always": syntax error, unexpected always, expecting class.
-# End time: 16:07:43 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 6, Warnings: 0
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:08:45 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v 
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# ** Error: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172): Recursive `include of file "/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v".
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(85): (vlog-2730) Undefined variable: 'ADDR_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(86): (vlog-2730) Undefined variable: 'DATA_WIDTH'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(93): (vlog-2730) Undefined variable: 'mem'.
-# ** Error: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(106): (vlog-2730) Undefined variable: 'clk'.
-# ** Error: (vlog-13069) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(115): near "always": syntax error, unexpected always, expecting class.
-# End time: 16:08:45 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 6, Warnings: 18
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:10:06 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v 
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# ** Error: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81): Recursive `include of file "/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v".
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# End time: 16:10:07 on Apr 27,2018, Elapsed time: 0:00:01
-# Errors: 1, Warnings: 18
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:10:23 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v 
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# -- Compiling module mesi_isc_tb
-# ** Error: ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81)
-# ** while parsing file included at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(172)
-# ** at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(81): Recursive `include of file "/home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v".
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(631): (vlog-2596) Component name 'clk' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(632): (vlog-2596) Component name 'rst' is not on a downward path.
-# ** Warning: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(633): (vlog-2596) Component name 'mesi_isc_tb_cpu3' is not on a downward path.
-# End time: 16:10:24 on Apr 27,2018, Elapsed time: 0:00:01
-# Errors: 1, Warnings: 18
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:12:09 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v 
-# -- Compiling module mesi_isc_tb
-# 
-# Top level modules:
-# 	mesi_isc_tb
-# End time: 16:12:09 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -voptargs=+acc my_lib.mesi_isc_tb
-# vsim -voptargs="+acc" my_lib.mesi_isc_tb 
-# Start time: 16:12:19 on Apr 27,2018
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(163): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_3/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(164): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_3/dbg_fifo_underflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(165): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_2/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(166): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_2/dbg_fifo_underflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(167): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_1/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(168): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_1/dbg_fifo_underflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(169): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_0/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(170): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_breq_fifos/fifo_0/dbg_fifo_underflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(171): Failed to find 'dbg_fifo_overflow' in hierarchical name '/mesi_isc/mesi_isc_broad/broad_fifo/dbg_fifo_overflow'.
-# ** Error (suppressible): (vopt-7063) /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb_sanity_check.v(172): Failed to find 'dbg_fifo_underflow' in hierarchical name '/mesi_isc/mesi_isc_broad/broad_fifo/dbg_fifo_underflow'.
-# Optimization failed
-# Error loading design
-# End time: 16:12:20 on Apr 27,2018, Elapsed time: 0:00:01
-# Errors: 10, Warnings: 0
-vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# Model Technology ModelSim SE-64 vlog 10.6 Compiler 2016.12 Dec 13 2016
-# Start time: 16:13:42 on Apr 27,2018
-# vlog -reportprogress 300 -work work /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v 
-# -- Compiling module mesi_isc_tb
-# 
-# Top level modules:
-# 	mesi_isc_tb
-# End time: 16:13:42 on Apr 27,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -voptargs=+acc my_lib.mesi_isc_tb
-# vsim -voptargs="+acc" my_lib.mesi_isc_tb 
-# Start time: 16:13:57 on Apr 27,2018
+# -- Compiling module mesi_isc_tb_wrp
+# ** Warning: modelsim.ini(1): (vlog-2283) Extra semicolon in $unit (global) scope.
+# ** Error: (vlog-13069) modelsim.ini(1): near "modelsim": syntax error, unexpected IDENTIFIER.
+# ** Error: modelsim.ini(1): (vlog-13205) Syntax error found in the scope following 'vsim'. Is there a missing '::'?
+# ** Error: (vlog-2054) File "my_lib" is a directory.
+# End time: 00:17:08 on Apr 29,2018, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 1
+# /misc/linuxws/packages/mentor_2016/modelsim10.6/modeltech/linux_x86_64/vlog failed.
+vsim -voptargs=+acc work.mesi_isc_tb_wrp
+# vsim -voptargs="+acc" work.mesi_isc_tb_wrp 
+# Start time: 00:17:27 on Apr 29,2018
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-143) Recognized 1 FSM in module "mesi_isc_tb_cpu(fast)".
-# ** Note: (vopt-143) Recognized 1 FSM in module "mesi_isc_tb_cpu(fast__1)".
-# Loading work.mesi_isc_tb(fast)
-# Loading work.mesi_isc(fast)
-# Loading work.mesi_isc_broad(fast)
-# Loading work.mesi_isc_broad_cntl(fast)
-# Loading work.mesi_isc_basic_fifo(fast)
-# Loading work.mesi_isc_breq_fifos(fast)
-# Loading work.mesi_isc_breq_fifos_cntl(fast)
-# Loading work.mesi_isc_basic_fifo(fast__1)
-# Loading work.mesi_isc_tb_cpu(fast)
-# Loading work.mesi_isc_tb_cpu(fast__1)
 # Loading sv_std.std
-# Loading work.cpu_sva(fast)
-run
-run
-run -all
-# Watchdog finish
-# 
-# Statistic
-# 
-# CPU 3. WR:       238 RD:       424 NOP:        68  
-# 
-# CPU 2. WR:       220 RD:       455 NOP:        58
-# 
-# CPU 1. WR:       202 RD:       434 NOP:        50
-# 
-# CPU 0. WR:        232 RD:       414 NOP:        57
-# 
-# Total rd and wr accesses:       2619
-# 
-# ** Note: $finish    : /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(315)
-#    Time: 2000950 ns  Iteration: 1  Instance: /mesi_isc_tb
-# 1
-# Break in Module mesi_isc_tb at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v line 315
-add wave /mesi_isc_tb/u_cpu_sva/assert__0
-run -all
-# ** Fatal: (vsim-VCD-8109) Unable to write more data to VCD file "./dump.vcd"
-#    Time: 112794 us  Iteration: 1  Process: /mesi_isc_tb/#ALWAYS#185 File: /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v
-# Fatal error in Module mesi_isc_tb at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v line 206
-# 
-run
-# Cannot continue because of fatal error.
-# HDL call sequence:
-# Stopped at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v 206 Module mesi_isc_tb
-# 
-# Break key hit
-# Break key hit
-# Break key hit
-# Break key hit
-# Break key hit
-# Break key hit
-# Break key hit
-# Break key hit
-# Break key hit
-# Break key hit
-# Break key hit
-add wave /mesi_isc_tb/u_cpu_sva/assert__0
-restart
-# Closing VCD file "./dump.vcd"
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.mesi_isc_tb_wrp(fast)
 # Loading work.mesi_isc_tb(fast)
 # Loading work.mesi_isc(fast)
 # Loading work.mesi_isc_broad(fast)
@@ -449,31 +82,13 @@ restart
 # Loading work.mesi_isc_breq_fifos_cntl(fast)
 # Loading work.mesi_isc_basic_fifo(fast__1)
 # Loading work.mesi_isc_tb_cpu(fast)
-# Loading work.mesi_isc_tb_cpu(fast__1)
 # Loading work.cpu_sva(fast)
-run
-run -all
-# Watchdog finish
-# 
-# Statistic
-# 
-# CPU 3. WR:       238 RD:       424 NOP:        68  
-# 
-# CPU 2. WR:       220 RD:       455 NOP:        58
-# 
-# CPU 1. WR:       202 RD:       434 NOP:        50
-# 
-# CPU 0. WR:        232 RD:       414 NOP:        57
-# 
-# Total rd and wr accesses:       2619
-# 
-# ** Note: $finish    : /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(315)
-#    Time: 2000950 ns  Iteration: 1  Instance: /mesi_isc_tb
-# 1
-# Break in Module mesi_isc_tb at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v line 315
+# Loading work.cpu_sva_wrapper(fast)
+add wave /mesi_isc_tb_wrp/tb/wrp/ap_cpu0_c1_only_m
+add wave /mesi_isc_tb_wrp/tb/wrp/ap_rst
 restart
-# Closing VCD file "./dump.vcd"
 # ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.mesi_isc_tb_wrp(fast)
 # Loading work.mesi_isc_tb(fast)
 # Loading work.mesi_isc(fast)
 # Loading work.mesi_isc_broad(fast)
@@ -483,8 +98,8 @@ restart
 # Loading work.mesi_isc_breq_fifos_cntl(fast)
 # Loading work.mesi_isc_basic_fifo(fast__1)
 # Loading work.mesi_isc_tb_cpu(fast)
-# Loading work.mesi_isc_tb_cpu(fast__1)
 # Loading work.cpu_sva(fast)
+# Loading work.cpu_sva_wrapper(fast)
 run -all
 # Watchdog finish
 # 
@@ -500,13 +115,14 @@ run -all
 # 
 # Total rd and wr accesses:       2619
 # 
-# ** Note: $finish    : /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(315)
-#    Time: 2000950 ns  Iteration: 1  Instance: /mesi_isc_tb
+# ** Note: $finish    : mesi_isc_tb.v(316)
+#    Time: 2000950 ns  Iteration: 1  Instance: /mesi_isc_tb_wrp/tb
 # 1
-# Break in Module mesi_isc_tb at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v line 315
+# Break in Module mesi_isc_tb at mesi_isc_tb.v line 316
 restart
 # Closing VCD file "./dump.vcd"
 # ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.mesi_isc_tb_wrp(fast)
 # Loading work.mesi_isc_tb(fast)
 # Loading work.mesi_isc(fast)
 # Loading work.mesi_isc_broad(fast)
@@ -516,8 +132,8 @@ restart
 # Loading work.mesi_isc_breq_fifos_cntl(fast)
 # Loading work.mesi_isc_basic_fifo(fast__1)
 # Loading work.mesi_isc_tb_cpu(fast)
-# Loading work.mesi_isc_tb_cpu(fast__1)
 # Loading work.cpu_sva(fast)
+# Loading work.cpu_sva_wrapper(fast)
 run -all
 # Watchdog finish
 # 
@@ -533,111 +149,9 @@ run -all
 # 
 # Total rd and wr accesses:       2619
 # 
-# ** Note: $finish    : /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(315)
-#    Time: 2000950 ns  Iteration: 1  Instance: /mesi_isc_tb
+# ** Note: $finish    : mesi_isc_tb.v(316)
+#    Time: 2000950 ns  Iteration: 1  Instance: /mesi_isc_tb_wrp/tb
 # 1
-# Break in Module mesi_isc_tb at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v line 315
-add wave -position insertpoint sim:/mesi_isc_tb/mesi_isc/mesi_isc_broad/*
-restart
-# Closing VCD file "./dump.vcd"
-# ** Note: (vsim-8009) Loading existing optimized design _opt
-# Loading work.mesi_isc_tb(fast)
-# Loading work.mesi_isc(fast)
-# Loading work.mesi_isc_broad(fast)
-# Loading work.mesi_isc_broad_cntl(fast)
-# Loading work.mesi_isc_basic_fifo(fast)
-# Loading work.mesi_isc_breq_fifos(fast)
-# Loading work.mesi_isc_breq_fifos_cntl(fast)
-# Loading work.mesi_isc_basic_fifo(fast__1)
-# Loading work.mesi_isc_tb_cpu(fast)
-# Loading work.mesi_isc_tb_cpu(fast__1)
-# Loading work.cpu_sva(fast)
-run -all
-# Watchdog finish
-# 
-# Statistic
-# 
-# CPU 3. WR:       238 RD:       424 NOP:        68  
-# 
-# CPU 2. WR:       220 RD:       455 NOP:        58
-# 
-# CPU 1. WR:       202 RD:       434 NOP:        50
-# 
-# CPU 0. WR:        232 RD:       414 NOP:        57
-# 
-# Total rd and wr accesses:       2619
-# 
-# ** Note: $finish    : /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(315)
-#    Time: 2000950 ns  Iteration: 1  Instance: /mesi_isc_tb
-# 1
-# Break in Module mesi_isc_tb at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v line 315
-add wave -position insertpoint sim:/mesi_isc_tb/mesi_isc_tb_cpu3/*
-restart
-# Closing VCD file "./dump.vcd"
-# ** Note: (vsim-8009) Loading existing optimized design _opt
-# Loading work.mesi_isc_tb(fast)
-# Loading work.mesi_isc(fast)
-# Loading work.mesi_isc_broad(fast)
-# Loading work.mesi_isc_broad_cntl(fast)
-# Loading work.mesi_isc_basic_fifo(fast)
-# Loading work.mesi_isc_breq_fifos(fast)
-# Loading work.mesi_isc_breq_fifos_cntl(fast)
-# Loading work.mesi_isc_basic_fifo(fast__1)
-# Loading work.mesi_isc_tb_cpu(fast)
-# Loading work.mesi_isc_tb_cpu(fast__1)
-# Loading work.cpu_sva(fast)
-run -all
-# Watchdog finish
-# 
-# Statistic
-# 
-# CPU 3. WR:       238 RD:       424 NOP:        68  
-# 
-# CPU 2. WR:       220 RD:       455 NOP:        58
-# 
-# CPU 1. WR:       202 RD:       434 NOP:        50
-# 
-# CPU 0. WR:        232 RD:       414 NOP:        57
-# 
-# Total rd and wr accesses:       2619
-# 
-# ** Note: $finish    : /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(315)
-#    Time: 2000950 ns  Iteration: 1  Instance: /mesi_isc_tb
-# 1
-# Break in Module mesi_isc_tb at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v line 315
-add wave -position insertpoint sim:/mesi_isc_tb/u_cpu_sva/*
-restart
-# Closing VCD file "./dump.vcd"
-# ** Note: (vsim-8009) Loading existing optimized design _opt
-# Loading work.mesi_isc_tb(fast)
-# Loading work.mesi_isc(fast)
-# Loading work.mesi_isc_broad(fast)
-# Loading work.mesi_isc_broad_cntl(fast)
-# Loading work.mesi_isc_basic_fifo(fast)
-# Loading work.mesi_isc_breq_fifos(fast)
-# Loading work.mesi_isc_breq_fifos_cntl(fast)
-# Loading work.mesi_isc_basic_fifo(fast__1)
-# Loading work.mesi_isc_tb_cpu(fast)
-# Loading work.mesi_isc_tb_cpu(fast__1)
-# Loading work.cpu_sva(fast)
-run -all
-# Watchdog finish
-# 
-# Statistic
-# 
-# CPU 3. WR:       238 RD:       424 NOP:        68  
-# 
-# CPU 2. WR:       220 RD:       455 NOP:        58
-# 
-# CPU 1. WR:       202 RD:       434 NOP:        50
-# 
-# CPU 0. WR:        232 RD:       414 NOP:        57
-# 
-# Total rd and wr accesses:       2619
-# 
-# ** Note: $finish    : /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v(315)
-#    Time: 2000950 ns  Iteration: 1  Instance: /mesi_isc_tb
-# 1
-# Break in Module mesi_isc_tb at /home/ecelrc/students/yliu8/Verification-Project/mesi_isc/src/tb/mesi_isc_tb.v line 315
-# End time: 16:37:49 on Apr 27,2018, Elapsed time: 0:23:52
-# Errors: 2, Warnings: 0
+# Break in Module mesi_isc_tb at mesi_isc_tb.v line 316
+# End time: 00:22:48 on Apr 29,2018, Elapsed time: 0:05:21
+# Errors: 0, Warnings: 0
