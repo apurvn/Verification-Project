@@ -1,0 +1,13 @@
+../rtl/mesi_isc_basic_fifo.v
+../rtl/mesi_isc_breq_fifos_cntl.v
+../rtl/mesi_isc_breq_fifos.v
+../rtl/mesi_isc_broad_cntl.v
+../rtl/mesi_isc_broad.v
+../rtl/mesi_isc_define.v
+../rtl/mesi_isc.v
+
+mesi_isc_tb_define.v
+mesi_isc_tb_cpu.v
+mesi_isc_tb.v
+mesi_isc_cpu_test.sv
+mesi_isc_tb_wrp.v

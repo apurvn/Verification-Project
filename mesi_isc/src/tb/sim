@@ -1,0 +1,1 @@
+./simv -assert success –assert verbose -assert report

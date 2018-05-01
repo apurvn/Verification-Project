@@ -174,11 +174,11 @@ assign cache_state9 = cache_state[9];
 
 // initial
 //================================  
-initial
-  for (i = 0; i < 10; i = i + 1)
-  begin
-    cache_state[i] = `MESI_ISC_TB_CPU_MESI_I;
-  end
+//initial
+//  for (i = 0; i < 10; i = i + 1)
+//  begin
+//    cache_state[i] = `MESI_ISC_TB_CPU_MESI_I;
+//  end
    
 // m_state - Main bus state machine and
 // c_state - Coherence bus state machine and
@@ -232,6 +232,10 @@ always @(posedge clk or posedge rst)
 always @(posedge clk or posedge rst)
   if (rst)
   begin
+                  for (i = 0; i < 10; i = i + 1)
+              cache_state[i] <= `MESI_ISC_TB_CPU_MESI_I;
+
+
             m_state                    <= `MESI_ISC_TB_CPU_M_STATE_IDLE;
             tb_ins_ack_o               <= 0; 
             mbus_cmd_o                 <= `MESI_ISC_MBUS_CMD_NOP;
@@ -243,6 +247,7 @@ always @(posedge clk or posedge rst)
             m_state_send_rd_br_counter <= 0;
             for (k = 0; k < 6; k = k + 1)
               wr_data[k]               <= 1;
+
 
   end
   else case (m_state)
@@ -553,7 +558,7 @@ always @(posedge clk or posedge rst)
                   c_addr,
                   cache_state[c_addr],
                   $time);
-        @(negedge clk) $finish();
+//        @(negedge clk) $finish();
       end
      // Debug end ---	 
       else         
@@ -589,7 +594,7 @@ always @(posedge clk or posedge rst)
                    c_addr,
                    cache_state[c_addr],
                    $time);
-          @(negedge clk) $finish();
+//          @(negedge clk) $finish();
         end
       else         
       // Write line to memory. After receiving acknowledge, change state to S,
@@ -625,7 +630,7 @@ always @(posedge clk or posedge rst)
                  wr_proc_addr,
                  c_addr,
                  $time);
-        @(negedge clk) $finish();
+//        @(negedge clk) $finish();
       end
             mbus_cmd_o        <= `MESI_ISC_MBUS_CMD_RD;
             mbus_addr_o       <= c_addr;
@@ -659,7 +664,7 @@ always @(posedge clk or posedge rst)
                   rd_proc_addr,
                   c_addr,
                   $time);
-          @(negedge clk) $finish();
+//          @(negedge clk) $finish();
         end
             mbus_cmd_o        <= `MESI_ISC_MBUS_CMD_RD;
             mbus_addr_o       <= c_addr;

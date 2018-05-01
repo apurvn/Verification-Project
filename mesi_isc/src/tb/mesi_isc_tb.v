@@ -321,7 +321,7 @@ end
 //================================
 initial
 begin
-  $dumpfile("./dump.vcd");
+  $dumpfile("./dump.vpd");
   $dumpvars(0,mesi_isc_tb);
 end
    

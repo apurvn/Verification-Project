@@ -1,0 +1,4 @@
+
+vcs -full64 -debug_all -f master -sverilog -PP -assert enable_diag \
++define+ASSERT_ON -y $VCS_HOME/packages/sva +libext+.v \
++incdir+$VCS_HOME/packages/sva
