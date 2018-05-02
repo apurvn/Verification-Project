@@ -24,6 +24,7 @@ assert_implication cpu0_cache_state_1_M (clk, ~rst, cache_state_cpu0[1] ==`MESI_
 assert_implication cpu1_cache_state_1_M (clk, ~rst, cache_state_cpu1[1] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu0[1] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[1] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[1] ==`MESI_ISC_TB_CPU_MESI_I)));
 */
 
+
 generate
 	for(genvar i = 0; i <= 9; i++) begin
 	assert_implication cpu0_cache_state_M (clk, ~rst, cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
@@ -79,16 +80,54 @@ end
 endgenerate
 
 
-
+generate
+    for(genvar i=0; i<=9; i++) begin
+        cover_cpu0_M: cover property (@(posedge clk) cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_M);
+        cover_cpu0_E: cover property (@(posedge clk) cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_E);
+        cover_cpu0_S: cover property (@(posedge clk) cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_S);
+        cover_cpu0_I: cover property (@(posedge clk) cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_I);
+    end
+endgenerate
 
 generate
     for(genvar i=0; i<=9; i++) begin
-write_cache : assert property (@(posedge clk) disable iff(rst) (cache_state_cpu0[i]==`MESI_ISC_TB_CPU_MESI_M || cache_state_cpu0[i]==`MESI_ISC_TB_CPU_MESI_E) && (tb_ins_i==`MESI_ISC_TB_INS_WR)  && (tb_ins_addr_i==i) && (c_state==`MESI_ISC_TB_CPU_M_STATE_IDLE) 
-        && (m_state==`MESI_ISC_TB_CPU_M_STATE_IDLE) 
-        |=> ##[0:$] m_state==`MESI_ISC_TB_CPU_M_STATE_WR_CACHE);
-
-end
+        cover_cpu1_M: cover property (@(posedge clk) cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_M);
+        cover_cpu1_E: cover property (@(posedge clk) cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_E);
+        cover_cpu1_S: cover property (@(posedge clk) cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_S);
+        cover_cpu1_I: cover property (@(posedge clk) cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_I);
+    end
 endgenerate
+
+generate
+    for(genvar i=0; i<=9; i++) begin
+        cover_cpu2_M: cover property (@(posedge clk) cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_M);
+        cover_cpu2_E: cover property (@(posedge clk) cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_E);
+        cover_cpu2_S: cover property (@(posedge clk) cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_S);
+        cover_cpu2_I: cover property (@(posedge clk) cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_I);
+    end
+endgenerate
+
+generate
+    for(genvar i=0; i<=9; i++) begin
+        cover_cpu3_M: cover property (@(posedge clk) cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_M);
+        cover_cpu3_E: cover property (@(posedge clk) cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_E);
+        cover_cpu3_S: cover property (@(posedge clk) cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_S);
+        cover_cpu3_I: cover property (@(posedge clk) cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_I);
+    end
+endgenerate
+
+cover_nop: cover property (@(posedge clk) tb_ins_i==`MESI_ISC_TB_INS_NOP);
+cover_write: cover property (@(posedge clk) tb_ins_i==`MESI_ISC_TB_INS_WR);
+cover_read: cover property (@(posedge clk) tb_ins_i==`MESI_ISC_TB_INS_RD);
+
+
+//generate
+//    for(genvar i=0; i<=9; i++) begin
+//write_cache : assert property (@(posedge clk) disable iff(rst) (cache_state_cpu0[i]==`MESI_ISC_TB_CPU_MESI_I) && (tb_ins_i==`MESI_ISC_TB_INS_WR)  && (tb_ins_addr_i==i)
+//        |=> ##[0:2000] cache_state_cpu0[i]==`MESI_ISC_TB_CPU_MESI_M);
+//
+//end
+//endgenerate
 
 //generate
 //    for(genvar i=0; i<=9; i++) begin
