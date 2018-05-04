@@ -1,3 +1,177 @@
+module mesi_isc_props (
+     clk,
+     rst,
+     mbus_cmd3_i,
+     mbus_cmd2_i,
+     mbus_cmd1_i,
+     mbus_cmd0_i,
+     mbus_addr3_i,
+     mbus_addr2_i,
+     mbus_addr1_i,
+     mbus_addr0_i,
+     cbus_ack3_i,
+     cbus_ack2_i,
+     cbus_ack1_i,
+     cbus_ack0_i,
+     cbus_addr_o,
+     cbus_cmd3_o,
+     cbus_cmd2_o,
+     cbus_cmd1_o,
+     cbus_cmd0_o,
+     mbus_ack3_o,
+     mbus_ack2_o,
+     mbus_ack1_o,
+     mbus_ack0_o,
+     broad_fifo_status_full,
+     fifo_status_empty_array
+);
+
+parameter
+  CBUS_CMD_WIDTH           = 3,
+  ADDR_WIDTH               = 32,
+  BROAD_TYPE_WIDTH         = 2,
+  BROAD_ID_WIDTH           = 5,  
+  BROAD_REQ_FIFO_SIZE      = 4,
+  BROAD_REQ_FIFO_SIZE_LOG2 = 2,
+  MBUS_CMD_WIDTH           = 3,
+  BREQ_FIFO_SIZE           = 2,
+  BREQ_FIFO_SIZE_LOG2      = 1;
+   
+// System
+input                   clk;          // System clock
+input                   rst;          // Active high system reset
+// Main buses
+input [MBUS_CMD_WIDTH-1:0] mbus_cmd3_i; // Main bus3 command
+input [MBUS_CMD_WIDTH-1:0] mbus_cmd2_i; // Main bus2 command
+input [MBUS_CMD_WIDTH-1:0] mbus_cmd1_i; // Main bus1 command
+input [MBUS_CMD_WIDTH-1:0] mbus_cmd0_i; // Main bus0 command
+// Coherence buses
+input [ADDR_WIDTH-1:0]  mbus_addr3_i;  // Coherence bus3 address
+input [ADDR_WIDTH-1:0]  mbus_addr2_i;  // Coherence bus2 address
+input [ADDR_WIDTH-1:0]  mbus_addr1_i;  // Coherence bus1 address
+input [ADDR_WIDTH-1:0]  mbus_addr0_i;  // Coherence bus0 address
+input cbus_ack3_i;  // Coherence bus3 acknowledge
+input cbus_ack2_i;  // Coherence bus2 acknowledge
+input cbus_ack1_i;  // Coherence bus1 acknowledge
+input cbus_ack0_i;  // Coherence bus0 acknowledge
+input broad_fifo_status_full;
+input [3:0] fifo_status_empty_array;
+   
+// Outputs
+//================================
+
+input [ADDR_WIDTH-1:0] cbus_addr_o;  // Coherence bus address. All busses have
+                                      // the same address
+input [CBUS_CMD_WIDTH-1:0] cbus_cmd3_o; // Coherence bus3 command
+input [CBUS_CMD_WIDTH-1:0] cbus_cmd2_o; // Coherence bus2 command
+input [CBUS_CMD_WIDTH-1:0] cbus_cmd1_o; // Coherence bus1 command
+input [CBUS_CMD_WIDTH-1:0] cbus_cmd0_o; // Coherence bus0 command
+
+
+input mbus_ack3_o;  // Main bus3 acknowledge
+input mbus_ack2_o;  // Main bus2 acknowledge
+input mbus_ack1_o;  // Main bus1 acknowledge
+input mbus_ack0_o;  // Main bus0 acknowledge
+
+//assume property (@(posedge clk) 
+
+// Properties for checking the acknowledge signals
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[3]) 
+        mbus_cmd3_i== `MESI_ISC_MBUS_CMD_WR_BROAD |-> ##[1:4] mbus_ack3_o);
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[2]) 
+        mbus_cmd2_i== `MESI_ISC_MBUS_CMD_WR_BROAD |-> ##[1:4] mbus_ack2_o);
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[1]) 
+        mbus_cmd1_i== `MESI_ISC_MBUS_CMD_WR_BROAD |-> ##[1:4] mbus_ack1_o);
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[0]) 
+        mbus_cmd0_i== `MESI_ISC_MBUS_CMD_WR_BROAD |-> ##[1:4] mbus_ack0_o);
+
+// Properties for checking the braodcast signals 
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[3]) 
+        mbus_cmd3_i== `MESI_ISC_MBUS_CMD_WR_BROAD |-> ##[1:4] cbus_cmd3_o == `MESI_ISC_CBUS_CMD_WR_SNOOP || cbus_cmd3_o == `MESI_ISC_CBUS_CMD_EN_WR);
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[3]) 
+        mbus_cmd3_i== `MESI_ISC_MBUS_CMD_RD_BROAD |-> ##[1:4] cbus_cmd3_o == `MESI_ISC_CBUS_CMD_RD_SNOOP || cbus_cmd3_o == `MESI_ISC_CBUS_CMD_EN_RD);
+
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[2]) 
+        mbus_cmd2_i== `MESI_ISC_MBUS_CMD_WR_BROAD |-> ##[1:4] cbus_cmd2_o == `MESI_ISC_CBUS_CMD_WR_SNOOP || cbus_cmd2_o == `MESI_ISC_CBUS_CMD_EN_WR);
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[2]) 
+        mbus_cmd2_i== `MESI_ISC_MBUS_CMD_RD_BROAD |-> ##[1:4] cbus_cmd2_o == `MESI_ISC_CBUS_CMD_RD_SNOOP || cbus_cmd2_o == `MESI_ISC_CBUS_CMD_EN_RD);
+
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[1]) 
+        mbus_cmd1_i== `MESI_ISC_MBUS_CMD_WR_BROAD |-> ##[1:4] cbus_cmd1_o == `MESI_ISC_CBUS_CMD_WR_SNOOP || cbus_cmd1_o == `MESI_ISC_CBUS_CMD_EN_WR);
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[1]) 
+        mbus_cmd1_i== `MESI_ISC_MBUS_CMD_RD_BROAD |-> ##[1:4] cbus_cmd1_o == `MESI_ISC_CBUS_CMD_RD_SNOOP || cbus_cmd1_o == `MESI_ISC_CBUS_CMD_EN_RD);
+
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[0]) 
+        mbus_cmd0_i== `MESI_ISC_MBUS_CMD_WR_BROAD |-> ##[1:4] cbus_cmd0_o == `MESI_ISC_CBUS_CMD_WR_SNOOP || cbus_cmd0_o == `MESI_ISC_CBUS_CMD_EN_WR);
+assert property (@(posedge clk) disable iff(rst | broad_fifo_status_full | fifo_status_empty_array[0]) 
+        mbus_cmd0_i== `MESI_ISC_MBUS_CMD_RD_BROAD |-> ##[1:4] cbus_cmd0_o == `MESI_ISC_CBUS_CMD_RD_SNOOP || cbus_cmd0_o == `MESI_ISC_CBUS_CMD_EN_RD);
+
+
+// Cover properties for checking cache requests, broadcast requests, acknowledge and enables
+cover property (@(posedge clk) mbus_cmd3_i==`MESI_ISC_MBUS_CMD_NOP);
+cover property (@(posedge clk) mbus_cmd3_i==`MESI_ISC_MBUS_CMD_WR);
+cover property (@(posedge clk) mbus_cmd3_i==`MESI_ISC_MBUS_CMD_RD);
+cover property (@(posedge clk) mbus_cmd3_i==`MESI_ISC_MBUS_CMD_WR_BROAD);
+cover property (@(posedge clk) mbus_cmd3_i==`MESI_ISC_MBUS_CMD_RD_BROAD);
+
+cover property (@(posedge clk) mbus_cmd2_i==`MESI_ISC_MBUS_CMD_NOP);
+cover property (@(posedge clk) mbus_cmd2_i==`MESI_ISC_MBUS_CMD_WR);
+cover property (@(posedge clk) mbus_cmd2_i==`MESI_ISC_MBUS_CMD_RD);
+cover property (@(posedge clk) mbus_cmd2_i==`MESI_ISC_MBUS_CMD_WR_BROAD);
+cover property (@(posedge clk) mbus_cmd2_i==`MESI_ISC_MBUS_CMD_RD_BROAD);
+
+cover property (@(posedge clk) mbus_cmd1_i==`MESI_ISC_MBUS_CMD_NOP);
+cover property (@(posedge clk) mbus_cmd1_i==`MESI_ISC_MBUS_CMD_WR);
+cover property (@(posedge clk) mbus_cmd1_i==`MESI_ISC_MBUS_CMD_RD);
+cover property (@(posedge clk) mbus_cmd1_i==`MESI_ISC_MBUS_CMD_WR_BROAD);
+cover property (@(posedge clk) mbus_cmd1_i==`MESI_ISC_MBUS_CMD_RD_BROAD);
+
+cover property (@(posedge clk) mbus_cmd0_i==`MESI_ISC_MBUS_CMD_NOP);
+cover property (@(posedge clk) mbus_cmd0_i==`MESI_ISC_MBUS_CMD_WR);
+cover property (@(posedge clk) mbus_cmd0_i==`MESI_ISC_MBUS_CMD_RD);
+cover property (@(posedge clk) mbus_cmd0_i==`MESI_ISC_MBUS_CMD_WR_BROAD);
+cover property (@(posedge clk) mbus_cmd0_i==`MESI_ISC_MBUS_CMD_RD_BROAD);
+
+cover property (@(posedge clk) cbus_ack3_i);
+cover property (@(posedge clk) cbus_ack2_i);
+cover property (@(posedge clk) cbus_ack1_i);
+cover property (@(posedge clk) cbus_ack0_i);
+
+cover property (@(posedge clk) mbus_ack3_o);
+cover property (@(posedge clk) mbus_ack2_o);
+cover property (@(posedge clk) mbus_ack1_o);
+cover property (@(posedge clk) mbus_ack0_o);
+
+cover property (@(posedge clk) cbus_cmd3_o==`MESI_ISC_CBUS_CMD_NOP);
+cover property (@(posedge clk) cbus_cmd3_o==`MESI_ISC_CBUS_CMD_WR_SNOOP);
+cover property (@(posedge clk) cbus_cmd3_o==`MESI_ISC_CBUS_CMD_RD_SNOOP);
+cover property (@(posedge clk) cbus_cmd3_o==`MESI_ISC_CBUS_CMD_EN_WR);
+cover property (@(posedge clk) cbus_cmd3_o==`MESI_ISC_CBUS_CMD_EN_RD);
+
+cover property (@(posedge clk) cbus_cmd2_o==`MESI_ISC_CBUS_CMD_NOP);
+cover property (@(posedge clk) cbus_cmd2_o==`MESI_ISC_CBUS_CMD_WR_SNOOP);
+cover property (@(posedge clk) cbus_cmd2_o==`MESI_ISC_CBUS_CMD_RD_SNOOP);
+cover property (@(posedge clk) cbus_cmd2_o==`MESI_ISC_CBUS_CMD_EN_WR);
+cover property (@(posedge clk) cbus_cmd2_o==`MESI_ISC_CBUS_CMD_EN_RD);
+
+cover property (@(posedge clk) cbus_cmd1_o==`MESI_ISC_CBUS_CMD_NOP);
+cover property (@(posedge clk) cbus_cmd1_o==`MESI_ISC_CBUS_CMD_WR_SNOOP);
+cover property (@(posedge clk) cbus_cmd1_o==`MESI_ISC_CBUS_CMD_RD_SNOOP);
+cover property (@(posedge clk) cbus_cmd1_o==`MESI_ISC_CBUS_CMD_EN_WR);
+cover property (@(posedge clk) cbus_cmd1_o==`MESI_ISC_CBUS_CMD_EN_RD);
+
+cover property (@(posedge clk) cbus_cmd0_o==`MESI_ISC_CBUS_CMD_NOP);
+cover property (@(posedge clk) cbus_cmd0_o==`MESI_ISC_CBUS_CMD_WR_SNOOP);
+cover property (@(posedge clk) cbus_cmd0_o==`MESI_ISC_CBUS_CMD_RD_SNOOP);
+cover property (@(posedge clk) cbus_cmd0_o==`MESI_ISC_CBUS_CMD_EN_WR);
+cover property (@(posedge clk) cbus_cmd0_o==`MESI_ISC_CBUS_CMD_EN_RD);
+
+
+cover property (@(posedge clk) broad_fifo_status_full);
+
+endmodule
+
+
 module broad_cntl_props (
     clk,
     rst,
@@ -9,7 +183,12 @@ module broad_cntl_props (
     broad_snoop_id_i,
     // Outputs
     cbus_cmd_array_o,
-    broad_fifo_rd_o
+    broad_fifo_rd_o,
+    // Internal Signals
+    cbus_active_broad_array,
+    cbus_active_en_access_array,
+    broadcast_in_progress,
+    broad_snoop_cpu_id
 );
 
 parameter
@@ -27,20 +206,98 @@ input [1:0]  broad_snoop_cpu_id_i;
 input [BROAD_ID_WIDTH-1:0] broad_snoop_id_i; 
 input [4*CBUS_CMD_WIDTH-1:0] cbus_cmd_array_o; 
 input broad_fifo_rd_o;
+input [3:0] cbus_active_broad_array;
+input [3:0] cbus_active_en_access_array;
+input broadcast_in_progress;
+input broad_snoop_cpu_id;
 
-logic cbus_cmd3 = cbus_cmd_array_o[(3+1)*CBUS_CMD_WIDTH-1 : 3*CBUS_CMD_WIDTH];
-logic cbus_cmd2 = cbus_cmd_array_o[(2+1)*CBUS_CMD_WIDTH-1 : 2*CBUS_CMD_WIDTH];
-logic cbus_cmd1 = cbus_cmd_array_o[(1+1)*CBUS_CMD_WIDTH-1 : 1*CBUS_CMD_WIDTH];
-logic cbus_cmd0 = cbus_cmd_array_o[(0+1)*CBUS_CMD_WIDTH-1 : 0*CBUS_CMD_WIDTH];
+logic [CBUS_CMD_WIDTH-1:0] cbus_cmd3 = cbus_cmd_array_o[(3+1)*CBUS_CMD_WIDTH-1 : 3*CBUS_CMD_WIDTH];
+logic [CBUS_CMD_WIDTH-1:0] cbus_cmd2 = cbus_cmd_array_o[(2+1)*CBUS_CMD_WIDTH-1 : 2*CBUS_CMD_WIDTH];
+logic [CBUS_CMD_WIDTH-1:0] cbus_cmd1 = cbus_cmd_array_o[(1+1)*CBUS_CMD_WIDTH-1 : 1*CBUS_CMD_WIDTH];
+logic [CBUS_CMD_WIDTH-1:0] cbus_cmd0 = cbus_cmd_array_o[(0+1)*CBUS_CMD_WIDTH-1 : 0*CBUS_CMD_WIDTH];
 
 // Assume properties
-assume property (@(posedge clk) cbus_cmd3 != 3'd5);
-assume property (@(posedge clk) cbus_cmd3 != 3'd6);
-assume property (@(posedge clk) cbus_cmd3 != 3'd7);
+//assume property (@(posedge clk) cbus_cmd3 != 3'd5);
+//assume property (@(posedge clk) cbus_cmd3 != 3'd6);
+//assume property (@(posedge clk) cbus_cmd3 != 3'd7);
+//
+//assume property (@(posedge clk) (broad_snoop_type_i == `MESI_ISC_BREQ_TYPE_RD) || (broad_snoop_type_i == `MESI_ISC_BREQ_TYPE_WR) || (broad_snoop_type_i == `MESI_ISC_BREQ_TYPE_NOP));
+//assume property (@(posedge clk) (cbus_active_broad_array == 4'b0000) || (cbus_active_broad_array == 4'b1110) || (cbus_active_broad_array == 4'b1101) ||
+//        (cbus_active_broad_array == 4'b1011) || (cbus_active_broad_array == 4'b0111) );
+//assume property (@(posedge clk) (cbus_active_en_access_array == 4'b0000) || (cbus_active_en_access_array == 4'b0001) || (cbus_active_en_access_array == 4'b0010) ||
+//        (cbus_active_en_access_array == 4'b0100) || (cbus_active_en_access_array == 4'b1000) );
 
 // Reset values
 assert property (@(posedge clk) $fell(rst) |-> broad_fifo_rd_o == 0);
+assert property (@(posedge clk) $fell(rst) |-> cbus_active_broad_array == 0);
+assert property (@(posedge clk) $fell(rst) |-> cbus_active_en_access_array == 0);
+assert property (@(posedge clk) $fell(rst) |-> broadcast_in_progress == 0);
 
+// Cbus commands
+assert property (@(posedge clk) disable iff(rst) cbus_active_broad_array[3] && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_WR) |-> cbus_cmd3 == `MESI_ISC_CBUS_CMD_WR_SNOOP);
+assert property (@(posedge clk) disable iff(rst) cbus_active_broad_array[3] && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_RD) |-> cbus_cmd3 == `MESI_ISC_CBUS_CMD_RD_SNOOP);
+assert property (@(posedge clk) disable iff(rst) !cbus_active_broad_array[3] && !(|cbus_active_broad_array) && cbus_active_en_access_array[3] && !broad_fifo_rd_o && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_WR) |-> cbus_cmd3 == `MESI_ISC_CBUS_CMD_EN_WR);
+assert property (@(posedge clk) disable iff(rst) !cbus_active_broad_array[3] && !(|cbus_active_broad_array) && cbus_active_en_access_array[3] && !broad_fifo_rd_o && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_RD) |-> cbus_cmd3 == `MESI_ISC_CBUS_CMD_EN_RD);
+
+assert property (@(posedge clk) disable iff(rst) cbus_active_broad_array[2] && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_WR) |-> cbus_cmd2 == `MESI_ISC_CBUS_CMD_WR_SNOOP);
+assert property (@(posedge clk) disable iff(rst) cbus_active_broad_array[2] && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_RD) |-> cbus_cmd2 == `MESI_ISC_CBUS_CMD_RD_SNOOP);
+assert property (@(posedge clk) disable iff(rst) !cbus_active_broad_array[2] && !(|cbus_active_broad_array) && cbus_active_en_access_array[2] && !broad_fifo_rd_o && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_WR) |-> cbus_cmd2 == `MESI_ISC_CBUS_CMD_EN_WR);
+assert property (@(posedge clk) disable iff(rst) !cbus_active_broad_array[2] && !(|cbus_active_broad_array) && cbus_active_en_access_array[2] && !broad_fifo_rd_o && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_RD) |-> cbus_cmd2 == `MESI_ISC_CBUS_CMD_EN_RD);
+
+assert property (@(posedge clk) disable iff(rst) cbus_active_broad_array[1] && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_WR) |-> cbus_cmd1 == `MESI_ISC_CBUS_CMD_WR_SNOOP);
+assert property (@(posedge clk) disable iff(rst) cbus_active_broad_array[1] && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_RD) |-> cbus_cmd1 == `MESI_ISC_CBUS_CMD_RD_SNOOP);
+assert property (@(posedge clk) disable iff(rst) !cbus_active_broad_array[1] && !(|cbus_active_broad_array) && cbus_active_en_access_array[1] && !broad_fifo_rd_o && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_WR) |-> cbus_cmd1 == `MESI_ISC_CBUS_CMD_EN_WR);
+assert property (@(posedge clk) disable iff(rst) !cbus_active_broad_array[1] && !(|cbus_active_broad_array) && cbus_active_en_access_array[1] && !broad_fifo_rd_o && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_RD) |-> cbus_cmd1 == `MESI_ISC_CBUS_CMD_EN_RD);
+
+assert property (@(posedge clk) disable iff(rst) cbus_active_broad_array[0] && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_WR) |-> cbus_cmd0 == `MESI_ISC_CBUS_CMD_WR_SNOOP);
+assert property (@(posedge clk) disable iff(rst) cbus_active_broad_array[0] && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_RD) |-> cbus_cmd0 == `MESI_ISC_CBUS_CMD_RD_SNOOP);
+assert property (@(posedge clk) disable iff(rst) !cbus_active_broad_array[0] && !(|cbus_active_broad_array) && cbus_active_en_access_array[0] && !broad_fifo_rd_o && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_WR) |-> cbus_cmd0 == `MESI_ISC_CBUS_CMD_EN_WR);
+assert property (@(posedge clk) disable iff(rst) !cbus_active_broad_array[0] && !(|cbus_active_broad_array) && cbus_active_en_access_array[0] && !broad_fifo_rd_o && (broad_snoop_type_i==`MESI_ISC_BREQ_TYPE_RD) |-> cbus_cmd0 == `MESI_ISC_CBUS_CMD_EN_RD);
+
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i |=> broadcast_in_progress);
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i && (broad_snoop_cpu_id_i==0) |=> cbus_active_broad_array==4'b1110);
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i && (broad_snoop_cpu_id_i==0) |=> cbus_active_en_access_array==4'b0001);
+
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i && (broad_snoop_cpu_id_i==1) |=> cbus_active_broad_array==4'b1101);
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i && (broad_snoop_cpu_id_i==1) |=> cbus_active_en_access_array==4'b0010);
+
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i && (broad_snoop_cpu_id_i==2) |=> cbus_active_broad_array==4'b1011);
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i && (broad_snoop_cpu_id_i==2) |=> cbus_active_en_access_array==4'b0100);
+
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i && (broad_snoop_cpu_id_i==3) |=> cbus_active_broad_array==4'b0111);
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i && (broad_snoop_cpu_id_i==3) |=> cbus_active_en_access_array==4'b1000);
+
+assert property (@(posedge clk) disable iff(rst) !broadcast_in_progress && !broad_fifo_rd_o && !fifo_status_empty_i && (broad_snoop_cpu_id_i==0) |=> !broad_fifo_rd_o);
+
+// Cover porperties 
+cover property (@(posedge clk) broad_fifo_rd_o);
+cover property (@(posedge clk) fifo_status_empty_i);
+cover property (@(posedge clk) fifo_status_full_i);
+
+cover property (@(posedge clk) broad_snoop_id_i == 0);
+cover property (@(posedge clk) broad_snoop_id_i == 1);
+cover property (@(posedge clk) broad_snoop_id_i == 2);
+cover property (@(posedge clk) broad_snoop_id_i == 3);
+
+cover property (@(posedge clk) cbus_cmd3==`MESI_ISC_CBUS_CMD_RD_SNOOP);
+cover property (@(posedge clk) cbus_cmd3==`MESI_ISC_CBUS_CMD_WR_SNOOP);
+cover property (@(posedge clk) cbus_cmd3==`MESI_ISC_CBUS_CMD_EN_WR);
+cover property (@(posedge clk) cbus_cmd3==`MESI_ISC_CBUS_CMD_EN_RD);
+
+cover property (@(posedge clk) cbus_cmd2==`MESI_ISC_CBUS_CMD_RD_SNOOP);
+cover property (@(posedge clk) cbus_cmd2==`MESI_ISC_CBUS_CMD_WR_SNOOP);
+cover property (@(posedge clk) cbus_cmd2==`MESI_ISC_CBUS_CMD_EN_WR);
+cover property (@(posedge clk) cbus_cmd2==`MESI_ISC_CBUS_CMD_EN_RD);
+
+cover property (@(posedge clk) cbus_cmd1==`MESI_ISC_CBUS_CMD_RD_SNOOP);
+cover property (@(posedge clk) cbus_cmd1==`MESI_ISC_CBUS_CMD_WR_SNOOP);
+cover property (@(posedge clk) cbus_cmd1==`MESI_ISC_CBUS_CMD_EN_WR);
+cover property (@(posedge clk) cbus_cmd1==`MESI_ISC_CBUS_CMD_EN_RD);
+
+cover property (@(posedge clk) cbus_cmd0==`MESI_ISC_CBUS_CMD_RD_SNOOP);
+cover property (@(posedge clk) cbus_cmd0==`MESI_ISC_CBUS_CMD_WR_SNOOP);
+cover property (@(posedge clk) cbus_cmd0==`MESI_ISC_CBUS_CMD_EN_WR);
+cover property (@(posedge clk) cbus_cmd0==`MESI_ISC_CBUS_CMD_EN_RD);
 
 
 endmodule   
@@ -104,34 +361,34 @@ logic [MBUS_CMD_WIDTH-1:0] mbus_cmd_array_i_2 = mbus_cmd_array_i[(2+1)*MBUS_CMD_
 logic [MBUS_CMD_WIDTH-1:0] mbus_cmd_array_i_1 = mbus_cmd_array_i[(1+1)*MBUS_CMD_WIDTH-1 : 1*MBUS_CMD_WIDTH];
 logic [MBUS_CMD_WIDTH-1:0] mbus_cmd_array_i_0 = mbus_cmd_array_i[(0+1)*MBUS_CMD_WIDTH-1 : 0*MBUS_CMD_WIDTH];
 
-// Empty and full signals shouldn't be active at the same time
-assume property (@(posedge clk) !(fifo_status_empty_array_i[0] && fifo_status_full_array_i[0]));
-assume property (@(posedge clk) !(fifo_status_empty_array_i[1] && fifo_status_full_array_i[1]));
-assume property (@(posedge clk) !(fifo_status_empty_array_i[2] && fifo_status_full_array_i[2]));
-assume property (@(posedge clk) !(fifo_status_empty_array_i[3] && fifo_status_full_array_i[3]));
-
-// Broad type doesn't take the value 3
-assume property (@(posedge clk) broad_type_array_i[(3+1)*BROAD_TYPE_WIDTH-1 : 3*BROAD_TYPE_WIDTH] != 3);
-assume property (@(posedge clk) broad_type_array_i[(2+1)*BROAD_TYPE_WIDTH-1 : 2*BROAD_TYPE_WIDTH] != 3);
-assume property (@(posedge clk) broad_type_array_i[(1+1)*BROAD_TYPE_WIDTH-1 : 1*BROAD_TYPE_WIDTH] != 3);
-assume property (@(posedge clk) broad_type_array_i[(0+1)*BROAD_TYPE_WIDTH-1 : 0*BROAD_TYPE_WIDTH] != 3);
-
-// Mbus command doesn't take the values 5, 6, and 7
-assume property (@(posedge clk) mbus_cmd_array_i[(3+1)*MBUS_CMD_WIDTH-1 : 3*MBUS_CMD_WIDTH] != 5);
-assume property (@(posedge clk) mbus_cmd_array_i[(3+1)*MBUS_CMD_WIDTH-1 : 3*MBUS_CMD_WIDTH] != 6);
-assume property (@(posedge clk) mbus_cmd_array_i[(3+1)*MBUS_CMD_WIDTH-1 : 3*MBUS_CMD_WIDTH] != 7);
-
-assume property (@(posedge clk) mbus_cmd_array_i[(2+1)*MBUS_CMD_WIDTH-1 : 2*MBUS_CMD_WIDTH] != 5);
-assume property (@(posedge clk) mbus_cmd_array_i[(2+1)*MBUS_CMD_WIDTH-1 : 2*MBUS_CMD_WIDTH] != 6);
-assume property (@(posedge clk) mbus_cmd_array_i[(2+1)*MBUS_CMD_WIDTH-1 : 2*MBUS_CMD_WIDTH] != 7);
-
-assume property (@(posedge clk) mbus_cmd_array_i[(1+1)*MBUS_CMD_WIDTH-1 : 1*MBUS_CMD_WIDTH] != 5);
-assume property (@(posedge clk) mbus_cmd_array_i[(1+1)*MBUS_CMD_WIDTH-1 : 1*MBUS_CMD_WIDTH] != 6);
-assume property (@(posedge clk) mbus_cmd_array_i[(1+1)*MBUS_CMD_WIDTH-1 : 1*MBUS_CMD_WIDTH] != 7);
-
-assume property (@(posedge clk) mbus_cmd_array_i[(0+1)*MBUS_CMD_WIDTH-1 : 0*MBUS_CMD_WIDTH] != 5);
-assume property (@(posedge clk) mbus_cmd_array_i[(0+1)*MBUS_CMD_WIDTH-1 : 0*MBUS_CMD_WIDTH] != 6);
-assume property (@(posedge clk) mbus_cmd_array_i[(0+1)*MBUS_CMD_WIDTH-1 : 0*MBUS_CMD_WIDTH] != 7);
+//// Empty and full signals shouldn't be active at the same time
+//assume property (@(posedge clk) !(fifo_status_empty_array_i[0] && fifo_status_full_array_i[0]));
+//assume property (@(posedge clk) !(fifo_status_empty_array_i[1] && fifo_status_full_array_i[1]));
+//assume property (@(posedge clk) !(fifo_status_empty_array_i[2] && fifo_status_full_array_i[2]));
+//assume property (@(posedge clk) !(fifo_status_empty_array_i[3] && fifo_status_full_array_i[3]));
+//
+//// Broad type doesn't take the value 3
+//assume property (@(posedge clk) broad_type_array_i[(3+1)*BROAD_TYPE_WIDTH-1 : 3*BROAD_TYPE_WIDTH] != 3);
+//assume property (@(posedge clk) broad_type_array_i[(2+1)*BROAD_TYPE_WIDTH-1 : 2*BROAD_TYPE_WIDTH] != 3);
+//assume property (@(posedge clk) broad_type_array_i[(1+1)*BROAD_TYPE_WIDTH-1 : 1*BROAD_TYPE_WIDTH] != 3);
+//assume property (@(posedge clk) broad_type_array_i[(0+1)*BROAD_TYPE_WIDTH-1 : 0*BROAD_TYPE_WIDTH] != 3);
+//
+//// Mbus command doesn't take the values 5, 6, and 7
+//assume property (@(posedge clk) mbus_cmd_array_i[(3+1)*MBUS_CMD_WIDTH-1 : 3*MBUS_CMD_WIDTH] != 5);
+//assume property (@(posedge clk) mbus_cmd_array_i[(3+1)*MBUS_CMD_WIDTH-1 : 3*MBUS_CMD_WIDTH] != 6);
+//assume property (@(posedge clk) mbus_cmd_array_i[(3+1)*MBUS_CMD_WIDTH-1 : 3*MBUS_CMD_WIDTH] != 7);
+//
+//assume property (@(posedge clk) mbus_cmd_array_i[(2+1)*MBUS_CMD_WIDTH-1 : 2*MBUS_CMD_WIDTH] != 5);
+//assume property (@(posedge clk) mbus_cmd_array_i[(2+1)*MBUS_CMD_WIDTH-1 : 2*MBUS_CMD_WIDTH] != 6);
+//assume property (@(posedge clk) mbus_cmd_array_i[(2+1)*MBUS_CMD_WIDTH-1 : 2*MBUS_CMD_WIDTH] != 7);
+//
+//assume property (@(posedge clk) mbus_cmd_array_i[(1+1)*MBUS_CMD_WIDTH-1 : 1*MBUS_CMD_WIDTH] != 5);
+//assume property (@(posedge clk) mbus_cmd_array_i[(1+1)*MBUS_CMD_WIDTH-1 : 1*MBUS_CMD_WIDTH] != 6);
+//assume property (@(posedge clk) mbus_cmd_array_i[(1+1)*MBUS_CMD_WIDTH-1 : 1*MBUS_CMD_WIDTH] != 7);
+//
+//assume property (@(posedge clk) mbus_cmd_array_i[(0+1)*MBUS_CMD_WIDTH-1 : 0*MBUS_CMD_WIDTH] != 5);
+//assume property (@(posedge clk) mbus_cmd_array_i[(0+1)*MBUS_CMD_WIDTH-1 : 0*MBUS_CMD_WIDTH] != 6);
+//assume property (@(posedge clk) mbus_cmd_array_i[(0+1)*MBUS_CMD_WIDTH-1 : 0*MBUS_CMD_WIDTH] != 7);
 
 
 // Reset values for signals
@@ -436,23 +693,23 @@ logic [MBUS_CMD_WIDTH-1:0] mbus_cmd_array_i_2 = mbus_cmd_array_i[(2+1)*MBUS_CMD_
 logic [MBUS_CMD_WIDTH-1:0] mbus_cmd_array_i_1 = mbus_cmd_array_i[(1+1)*MBUS_CMD_WIDTH-1 : 1*MBUS_CMD_WIDTH];
 logic [MBUS_CMD_WIDTH-1:0] mbus_cmd_array_i_0 = mbus_cmd_array_i[(0+1)*MBUS_CMD_WIDTH-1 : 0*MBUS_CMD_WIDTH];
 
-assume property (@(posedge clk) broad_type_o != 3);
-
-assume property (@(posedge clk) mbus_cmd_array_i_3 != 5);
-assume property (@(posedge clk) mbus_cmd_array_i_3 != 6);
-assume property (@(posedge clk) mbus_cmd_array_i_3 != 7);
-
-assume property (@(posedge clk) mbus_cmd_array_i_2 != 5);
-assume property (@(posedge clk) mbus_cmd_array_i_2 != 6);
-assume property (@(posedge clk) mbus_cmd_array_i_2 != 7);
-
-assume property (@(posedge clk) mbus_cmd_array_i_1 != 5);
-assume property (@(posedge clk) mbus_cmd_array_i_1 != 6);
-assume property (@(posedge clk) mbus_cmd_array_i_1 != 7);
-
-assume property (@(posedge clk) mbus_cmd_array_i_0 != 5);
-assume property (@(posedge clk) mbus_cmd_array_i_0 != 6);
-assume property (@(posedge clk) mbus_cmd_array_i_0 != 7);
+//assume property (@(posedge clk) broad_type_o != 3);
+//
+//assume property (@(posedge clk) mbus_cmd_array_i_3 != 5);
+//assume property (@(posedge clk) mbus_cmd_array_i_3 != 6);
+//assume property (@(posedge clk) mbus_cmd_array_i_3 != 7);
+//
+//assume property (@(posedge clk) mbus_cmd_array_i_2 != 5);
+//assume property (@(posedge clk) mbus_cmd_array_i_2 != 6);
+//assume property (@(posedge clk) mbus_cmd_array_i_2 != 7);
+//
+//assume property (@(posedge clk) mbus_cmd_array_i_1 != 5);
+//assume property (@(posedge clk) mbus_cmd_array_i_1 != 6);
+//assume property (@(posedge clk) mbus_cmd_array_i_1 != 7);
+//
+//assume property (@(posedge clk) mbus_cmd_array_i_0 != 5);
+//assume property (@(posedge clk) mbus_cmd_array_i_0 != 6);
+//assume property (@(posedge clk) mbus_cmd_array_i_0 != 7);
 
 assert property (@(posedge clk) fifo_status_empty_array[0] |-> !fifo_rd_array[0]);
 assert property (@(posedge clk) fifo_status_empty_array[1] |-> !fifo_rd_array[1]);
@@ -463,6 +720,24 @@ assert property (@(posedge clk) fifo_status_full_array[3] |-> !fifo_wr_array[3])
 assert property (@(posedge clk) fifo_status_full_array[2] |-> !fifo_wr_array[2]);
 assert property (@(posedge clk) fifo_status_full_array[1] |-> !fifo_wr_array[1]);
 assert property (@(posedge clk) fifo_status_full_array[0] |-> !fifo_wr_array[0]);
+
+assert property (@(posedge clk) disable iff(broad_fifo_status_full_i | fifo_status_empty_array[0]) mbus_cmd_array_i_0==`MESI_ISC_MBUS_CMD_RD  |-> ##[1:4] (fifo_rd_array[0]));
+assert property (@(posedge clk) disable iff(broad_fifo_status_full_i | fifo_status_empty_array[1]) mbus_cmd_array_i_1==`MESI_ISC_MBUS_CMD_RD  |-> ##[1:4] (fifo_rd_array[1]));
+assert property (@(posedge clk) disable iff(broad_fifo_status_full_i | fifo_status_empty_array[2]) mbus_cmd_array_i_2==`MESI_ISC_MBUS_CMD_RD  |-> ##[1:4] (fifo_rd_array[2]));
+assert property (@(posedge clk) disable iff(broad_fifo_status_full_i | fifo_status_empty_array[3]) mbus_cmd_array_i_3==`MESI_ISC_MBUS_CMD_RD  |-> ##[1:4] (fifo_rd_array[3]));
+
+assert property (@(posedge clk) fifo_rd_array[0] |-> broad_cpu_id_o==0);
+assert property (@(posedge clk) fifo_rd_array[1] |-> broad_cpu_id_o==1);
+assert property (@(posedge clk) fifo_rd_array[2] |-> broad_cpu_id_o==2);
+assert property (@(posedge clk) fifo_rd_array[3] |-> broad_cpu_id_o==3);
+
+assert property (@(posedge clk) disable iff(rst) mbus_ack_array_o[0] |=> !mbus_ack_array_o[0]);
+assert property (@(posedge clk) disable iff(rst) mbus_ack_array_o[1] |=> !mbus_ack_array_o[1]);
+assert property (@(posedge clk) disable iff(rst) mbus_ack_array_o[2] |=> !mbus_ack_array_o[2]);
+assert property (@(posedge clk) disable iff(rst) mbus_ack_array_o[3] |=> !mbus_ack_array_o[3]);
+
+
+assert property (@(posedge clk) broad_fifo_status_full_i |-> !broad_fifo_wr_o);
 
 endmodule   
 
@@ -501,13 +776,54 @@ input [ADDR_WIDTH-1:0] cbus_addr_o;
 input [4*CBUS_CMD_WIDTH-1:0] cbus_cmd_array_o; 
 input fifo_status_full_o; 
 
+// Assert
+assert property (@(posedge clk) fifo_status_full_o |-> !broad_fifo_wr_i);
+
+// Other properties are similar to the broad controller
+// as there is no extra logic in this module aside from that and a FIFO
+
+// Cover properties 
+cover property (@(posedge clk) broad_fifo_wr_i);
+cover property (@(posedge clk) fifo_status_full_o);
+
+cover property (@(posedge clk) broad_cpu_id_i ==0);
+cover property (@(posedge clk) broad_cpu_id_i ==1);
+cover property (@(posedge clk) broad_cpu_id_i ==2);
+cover property (@(posedge clk) broad_cpu_id_i ==3);
 
 endmodule   
 
 
-
-
 module Wrapper;
+
+bind mesi_isc mesi_isc_props wrp_mesi_isc (
+     .clk(clk),
+     .rst(rst),
+     .mbus_cmd3_i(mbus_cmd3_i),
+     .mbus_cmd2_i(mbus_cmd2_i),
+     .mbus_cmd1_i(mbus_cmd1_i),
+     .mbus_cmd0_i(mbus_cmd0_i),
+     .mbus_addr3_i(mbus_addr3_i),
+     .mbus_addr2_i(mbus_addr2_i),
+     .mbus_addr1_i(mbus_addr1_i),
+     .mbus_addr0_i(mbus_addr0_i),
+     .cbus_ack3_i(cbus_ack3_i),
+     .cbus_ack2_i(cbus_ack2_i),
+     .cbus_ack1_i(cbus_ack1_i),
+     .cbus_ack0_i(cbus_ack0_i),
+     .cbus_addr_o(cbus_addr_o),
+     .cbus_cmd3_o(cbus_cmd3_o),
+     .cbus_cmd2_o(cbus_cmd2_o),
+     .cbus_cmd1_o(cbus_cmd1_o),
+     .cbus_cmd0_o(cbus_cmd0_o),
+     .mbus_ack3_o(mbus_ack3_o),
+     .mbus_ack2_o(mbus_ack2_o),
+     .mbus_ack1_o(mbus_ack1_o),
+     .mbus_ack0_o(mbus_ack0_o),
+     .broad_fifo_status_full(broad_fifo_status_full),
+     .fifo_status_empty_array(mesi_isc_breq_fifos.fifo_status_empty_array)
+);   
+
 
 bind mesi_isc breq_fifos_props #(MBUS_CMD_WIDTH,
                       ADDR_WIDTH,
@@ -657,7 +973,10 @@ bind mesi_isc_broad_cntl broad_cntl_props #(CBUS_CMD_WIDTH,
     .broad_snoop_cpu_id_i(mesi_isc_broad.mesi_isc_broad_cntl.broad_snoop_cpu_id_i),
     .broad_snoop_id_i(mesi_isc_broad.mesi_isc_broad_cntl.broad_snoop_id_i),
     .cbus_cmd_array_o(mesi_isc_broad.mesi_isc_broad_cntl.cbus_cmd_array_o),
-    .broad_fifo_rd_o(mesi_isc_broad.mesi_isc_broad_cntl.broad_fifo_rd_o)
+    .broad_fifo_rd_o(mesi_isc_broad.mesi_isc_broad_cntl.broad_fifo_rd_o),
+    .cbus_active_broad_array(mesi_isc_broad.mesi_isc_broad_cntl.cbus_active_broad_array),
+    .cbus_active_en_access_array(mesi_isc_broad.mesi_isc_broad_cntl.cbus_active_en_access_array),
+    .broadcast_in_progress(mesi_isc_broad.mesi_isc_broad_cntl.broadcast_in_progress)
 );
 
 bind mesi_isc mesi_isc_fifo_props #(
