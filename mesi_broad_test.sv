@@ -32,6 +32,21 @@ input [ADDR_WIDTH-1:0] cbus_addr_o;
 input [4*CBUS_CMD_WIDTH-1:0] cbus_cmd_array_o; 
 input fifo_status_full_o; 
 
+// Assert
+assert property (@(posedge clk) fifo_status_full_o |-> !broad_fifo_wr_i);
+
+// Other properties are similar to the broad controller
+// as there is no extra logic in this module aside from that and a FIFO
+
+// Cover properties 
+cover property (@(posedge clk) broad_fifo_wr_i);
+cover property (@(posedge clk) fifo_status_full_o);
+
+cover property (@(posedge clk) broad_cpu_id_i ==0);
+cover property (@(posedge clk) broad_cpu_id_i ==1);
+cover property (@(posedge clk) broad_cpu_id_i ==2);
+cover property (@(posedge clk) broad_cpu_id_i ==3);
+
 
 endmodule   
 
