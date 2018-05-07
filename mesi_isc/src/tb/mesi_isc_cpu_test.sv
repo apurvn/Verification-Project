@@ -18,25 +18,25 @@ module cpu_sva (
 /********************* check in rst ********************/
 generate 
 	for(genvar i=0; i <= 9; i++) begin
-	assert_cpu0_rst: assert_implication cpu0_rst_cache_state (clk, rst, (rst == 1),(cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I));
+	assert_implication cpu0_rst_cache_state (clk, rst, (rst == 1),(cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I));
 end
 endgenerate
 
 generate 
 	for(genvar i=0; i <= 9; i++) begin
-	assert_cpu1_rst: assert_implication cpu1_rst_cache_state (clk, rst, (rst == 1),(cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I));
+	assert_implication cpu1_rst_cache_state (clk, rst, (rst == 1),(cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I));
 end
 endgenerate
 
 generate 
 	for(genvar i=0; i <= 9; i++) begin
-	assert_cpu2_rst: assert_implication cpu2_rst_cache_state (clk, rst, (rst == 1),(cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I));
+	assert_implication cpu2_rst_cache_state (clk, rst, (rst == 1),(cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I));
 end
 endgenerate
 
 generate 
 	for(genvar i=0; i <= 9; i++) begin
-	assert_cpu3_rst: assert_implication cpu3_rst_cache_state (clk, rst, (rst == 1),(cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I));
+	assert_implication cpu3_rst_cache_state (clk, rst, (rst == 1),(cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I));
 end
 endgenerate
 
@@ -51,64 +51,206 @@ endgenerate
 /********************* check M & E *********************/
 generate
 	for(genvar i = 0; i <= 9; i++) begin
-	assert_cpu0_cache_state_M: assert_implication cpu0_cache_state_M (clk, ~rst, cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
-	assert_cpu0_cache_state_E: assert_implication cpu0_cache_state_E (clk, ~rst, cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_E, ((cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
+	assert_implication cpu0_cache_state_M (clk, ~rst, cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
+	assert_implication cpu0_cache_state_E (clk, ~rst, cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_E, ((cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
 end
 endgenerate
 
 generate
 	for(genvar i = 0; i <= 9; i++) begin
-	assert_cpu1_cache_state_M: assert_implication cpu1_cache_state_M (clk, ~rst, cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
-	assert_cpu1_cache_state_E: assert_implication cpu1_cache_state_E (clk, ~rst, cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_E, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
+	assert_implication cpu1_cache_state_M (clk, ~rst, cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
+	assert_implication cpu1_cache_state_E (clk, ~rst, cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_E, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
 end
 endgenerate
 
 generate
 	for(genvar i = 0; i <= 9; i++) begin
-	assert_cpu2_cache_state_M: assert_implication cpu2_cache_state_M (clk, ~rst, cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
-	assert_cpu2_cache_state_E: assert_implication cpu2_cache_state_E (clk, ~rst, cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_E, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
+	assert_implication cpu2_cache_state_M (clk, ~rst, cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
+	assert_implication cpu2_cache_state_E (clk, ~rst, cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_E, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I)));
 end
 endgenerate
 
 generate
 	for(genvar i = 0; i <= 9; i++) begin
-	assert_cpu3_cache_state_M: assert_implication cpu3_cache_state_M (clk, ~rst, cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I)));
-	assert_cpu3_cache_state_E: assert_implication cpu3_cache_state_E (clk, ~rst, cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_E, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I)));
+	assert_implication cpu3_cache_state_M (clk, ~rst, cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_M, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I)));
+	assert_implication cpu3_cache_state_E (clk, ~rst, cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_E, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I)));
 end
 endgenerate
  
 /********************* check S *********************/
 generate
 	for(genvar i = 0; i <= 9; i++) begin
-	assert_cpu0_cache_state_S: assert_implication cpu3_cache_state_S (clk, ~rst, cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_S, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_S) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_S || cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_S)));
+	assert_implication cpu3_cache_state_S (clk, ~rst, cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_S, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_S) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_S || cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_S)));
 end
 endgenerate
 
 generate
 	for(genvar i = 0; i <= 9; i++) begin
-	assert_cpu1_cache_state_S: assert_implication cpu2_cache_state_S (clk, ~rst, cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_S, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_S) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_S || cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_S)));
+	assert_implication cpu2_cache_state_S (clk, ~rst, cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_S, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_S) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_S || cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_S)));
 end
 endgenerate
 
 
 generate
 	for(genvar i = 0; i <= 9; i++) begin
-	assert_cpu2_cache_state_S: assert_implication cpu1_cache_state_S (clk, ~rst, cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_S, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_S) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_S || cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_S)));
+	assert_implication cpu1_cache_state_S (clk, ~rst, cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_S, ((cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_S) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_S || cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_S)));
 end
 endgenerate
 
 generate
 	for(genvar i = 0; i <= 9; i++) begin
-	assert_cpu3_cache_state_S: assert_implication cpu0_cache_state_S (clk, ~rst, cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_S, ((cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_S) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_S || cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_S)));
+	assert_implication cpu0_cache_state_S (clk, ~rst, cache_state_cpu0[i] ==`MESI_ISC_TB_CPU_MESI_S, ((cache_state_cpu3[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_S) && (cache_state_cpu1[i] ==`MESI_ISC_TB_CPU_MESI_S || cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_I) && (cache_state_cpu2[i] ==`MESI_ISC_TB_CPU_MESI_I || cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_S)));
 end
 endgenerate
 
 /********************* failed write starve property *********************/
+//Local WR to a cache line ends the state to be in Modified
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	write_starve_cpu0: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_WR) && (tb_ins_addr_i == i) |=>  ##[0:500] cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_M);
+	end
+endgenerate
 
 generate
 	for(genvar i = 0; i <= 9; i++) begin
-	write_starve: assert property (@(posedge clk) disable iff(rst) 
-		(tb_ins_i == `MESI_ISC_TB_INS_WR) && (tb_ins_addr_i == i) |=>  ##[0:500] cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_M);
+	write_starve_cpu1: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_WR) && (tb_ins_addr_i == i) |=>  ##[0:500] cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_M);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	write_starve_cpu2: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_WR) && (tb_ins_addr_i == i) |=>  ##[0:500] cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_M);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	write_starve_cpu3: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_WR) && (tb_ins_addr_i == i) |=>  ##[0:500] cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_M);
+	end
+endgenerate
+
+/********************* failed local rd changes from I to E property *********************/
+//Local RD of an Invalid cache line changes the state to Exclusive
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_ItoE_cpu0: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_I) |=>  ##[0:500] cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_E);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_ItoE_cpu1: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_I) |=>  ##[0:500] cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_E);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_ItoE_cpu2: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_I) |=>  ##[0:500] cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_E);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_ItoE_cpu3: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_I) |=>  ##[0:500] cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_E);
+	end
+endgenerate
+
+/********************* failed local rd changes from E to E property *********************/
+//Local RD of an Exclusive cache line changes the state to Exclusive
+//for most of the cache lines, Exclusive state is not reached!
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_EtoE_cpu0: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_E) |=>  ##[0:500] cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_E);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_EtoE_cpu1: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_E) |=>  ##[0:500] cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_E);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_EtoE_cpu2: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_E) |=>  ##[0:500] cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_E);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_EtoE_cpu3: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_E) |=>  ##[0:500] cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_E);
+	end
+endgenerate
+
+/********************* failed local rd changes from S to S property *********************/
+//Local RD of an Shared cache line keeps in Shared
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_StoS_cpu0: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_S) |=>  ##[0:500] cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_S);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_StoS_cpu1: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_S) |=>  ##[0:500] cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_S);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_StoS_cpu2: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_S) |=>  ##[0:500] cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_S);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_StoS_cpu3: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_S) |=>  ##[0:500] cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_S);
+	end
+endgenerate
+
+/********************* failed local rd changes from M to M property *********************/
+//Local RD of an Modified cache line keeps in Modified
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_MtoM_cpu0: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_M) |=>  ##[0:500] cache_state_cpu0[i] == `MESI_ISC_TB_CPU_MESI_M);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_MtoM_cpu1: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_M) |=>  ##[0:500] cache_state_cpu1[i] == `MESI_ISC_TB_CPU_MESI_M);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_MtoM_cpu2: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_M) |=>  ##[0:500] cache_state_cpu2[i] == `MESI_ISC_TB_CPU_MESI_M);
+	end
+endgenerate
+
+generate
+	for(genvar i = 0; i <= 9; i++) begin
+	Local_RD_MtoM_cpu3: assert property (@(posedge clk) disable iff(rst) 
+		(tb_ins_i == `MESI_ISC_TB_INS_RD) && (tb_ins_addr_i == i) && (cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_M) |=>  ##[0:500] cache_state_cpu3[i] == `MESI_ISC_TB_CPU_MESI_M);
 	end
 endgenerate
 
